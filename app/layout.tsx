@@ -14,6 +14,7 @@ import { useAppDispatch } from "@/configs/redux/hooks";
 import { fetchLoggedInUser } from "@/configs/redux/auth/authSlice";
 import { WagmiProviderComponent } from "./utils/provider/WagmiProvider";
 import { Toaster } from "sonner";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,6 +33,7 @@ export default function RootLayout({
 }) {
   return (
     <StoreProvider>
+      <SpeedInsights />
       <html lang="en" suppressHydrationWarning>
         <meta
           name="impact-site-verification"
