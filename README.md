@@ -80,7 +80,7 @@ This project is licensed under the **MIT License** — free to use, modify, and 
 
 ## 🌠 About
 
-**MagicWorlds** is a collaborative digital universe — blending technology, creativity, and community.
+**MagicWorlds** is a digital universe — blending technology, creativity, and community.
 Stay tuned for new module updates, in-game integrations, and ecosystem tools.
 
 > “Where imagination meets innovation — welcome to MagicWorlds.”
