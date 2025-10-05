@@ -157,7 +157,7 @@ const Hero = () => {
   }, [gameCharacters.length]);
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-gradient-to-b from-black via-indigo-900/40 to-black pt-0 sm:pt-16">
+    <section className="relative h-full w-full overflow-hidden bg-gradient-to-b from-black via-indigo-900/40 to-black pt-0 sm:pt-16 lg:min-h-[800px]">
       {/* Animated background particles */}
       <canvas ref={particlesRef} className="absolute inset-0 z-0 opacity-50" />
 
