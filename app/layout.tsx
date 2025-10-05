@@ -33,12 +33,12 @@ export default function RootLayout({
 }) {
   return (
     <StoreProvider>
-      <SpeedInsights />
       <html lang="en" suppressHydrationWarning>
         <meta
           name="impact-site-verification"
           content="3211f99b-74dc-43e7-9fe6-193de26f04a0"
         />
+        <SpeedInsights />
         <body className={`${inter.className}`}>
           <ThemeProvider
             enableSystem={false}
