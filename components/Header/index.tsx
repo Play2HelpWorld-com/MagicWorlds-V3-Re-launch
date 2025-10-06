@@ -197,11 +197,11 @@ const Header = () => {
                   >
                     {menuItem.submenu ? (
                       <>
-                        <button className="flex cursor-pointer items-center justify-between gap-3 text-base font-semibold tracking-wide text-gray-700 dark:text-gray-200 transition-all duration-500 ease-out hover:translate-x-1 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 dark:from-gray-100 dark:via-white dark:to-gray-100 bg-clip-text hover:text-transparent hover:from-indigo-500 hover:via-purple-500 hover:to-pink-500 [text-shadow:0_2px_8px_rgba(0,0,0,0.1)] dark:[text-shadow:0_2px_8px_rgba(255,255,255,0.1)]">
+                        <button className="flex cursor-pointer items-center justify-between gap-3 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 bg-clip-text text-base font-semibold tracking-wide text-gray-700 transition-all duration-500 ease-out [text-shadow:0_2px_8px_rgba(0,0,0,0.1)] hover:translate-x-1 hover:from-indigo-500 hover:via-purple-500 hover:to-pink-500 hover:text-transparent dark:from-gray-100 dark:via-white dark:to-gray-100 dark:text-gray-200 dark:[text-shadow:0_2px_8px_rgba(255,255,255,0.1)]">
                           {menuItem.title}
                           <span className="transition-transform duration-500 ease-out group-hover:rotate-180 group-hover:scale-110">
                             <svg
-                              className="h-3 w-3 cursor-pointer fill-gray-600 dark:fill-gray-400 transition-all duration-500 ease-out group-hover:fill-indigo-500"
+                              className="h-3 w-3 cursor-pointer fill-gray-600 transition-all duration-500 ease-out group-hover:fill-indigo-500 dark:fill-gray-400"
                               xmlns="http://www.w3.org/2000/svg"
                               viewBox="0 0 512 512"
                             >
@@ -224,9 +224,9 @@ const Header = () => {
                                 key={key}
                                 className="transition-all duration-500 ease-out hover:translate-x-2 hover:scale-105"
                               >
-                                <Link 
+                                <Link
                                   href={item.path || "#"}
-                                  className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text transition-all duration-500 ease-out"
+                                  className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-sm font-medium text-gray-600 transition-all duration-500 ease-out hover:text-transparent dark:text-gray-300"
                                 >
                                   {item.title}
                                 </Link>
@@ -240,15 +240,17 @@ const Header = () => {
                         href={`${menuItem.path}`}
                         className={`relative inline-block text-base font-semibold tracking-wide transition-all duration-500 ease-out hover:translate-y-[-2px] hover:scale-105 active:scale-95 ${
                           pathUrl === menuItem.path
-                            ? "text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text drop-shadow-[0_0_8px_rgba(99,102,241,0.3)]"
-                            : "text-gray-700 dark:text-gray-200 hover:text-transparent bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 dark:from-gray-100 dark:via-white dark:to-gray-100 hover:from-indigo-500 hover:via-purple-500 hover:to-pink-500 bg-clip-text"
+                            ? "bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-[0_0_8px_rgba(99,102,241,0.3)]"
+                            : "bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 bg-clip-text text-gray-700 hover:from-indigo-500 hover:via-purple-500 hover:to-pink-500 hover:text-transparent dark:from-gray-100 dark:via-white dark:to-gray-100 dark:text-gray-200"
                         }`}
                       >
                         <span className="relative inline-flex items-center">
-                          <span className="relative z-10">{menuItem.title}</span>
+                          <span className="relative z-10">
+                            {menuItem.title}
+                          </span>
                           {pathUrl === menuItem.path && (
                             <>
-                              <span className="absolute -bottom-1 left-0 h-0.5 w-full animate-[shimmer_2s_ease-in-out_infinite] rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 transition-all duration-500 ease-out shadow-[0_0_8px_rgba(99,102,241,0.6)]"></span>
+                              <span className="absolute -bottom-1 left-0 h-0.5 w-full animate-[shimmer_2s_ease-in-out_infinite] rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 shadow-[0_0_8px_rgba(99,102,241,0.6)] transition-all duration-500 ease-out"></span>
                               <span className="absolute -inset-1 -z-10 animate-pulse rounded-lg bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 blur-sm"></span>
                             </>
                           )}
@@ -264,12 +266,27 @@ const Header = () => {
               {/* <ProfileModal navOpen={navigationOpen} setNavopen = {setNavigationOpen}/> */}
               <Link
                 href="/support"
-                className="rounded-full bg-gradient-to-r from-indigo-500 via-indigo-600 to-indigo-700 px-6 py-2.5 font-semibold text-white backdrop-blur-xl transition-all duration-500 ease-[cubic-bezier(0.86,0,0.07,1)] hover:-translate-y-0.5 hover:scale-105 hover:shadow-[0_8px_24px_rgba(79,70,229,0.4)] active:translate-y-0 active:scale-95"
+                className="group relative overflow-hidden rounded-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 px-6 py-2.5 font-bold text-white shadow-lg shadow-indigo-500/50 backdrop-blur-xl transition-all duration-500 ease-[cubic-bezier(0.86,0,0.07,1)] before:absolute before:inset-0 before:bg-gradient-to-r before:from-pink-600 before:via-purple-600 before:to-indigo-600 before:opacity-0 before:transition-opacity before:duration-500 hover:-translate-y-0.5 hover:scale-105 hover:shadow-[0_8px_32px_rgba(99,102,241,0.6)] hover:before:opacity-100 active:translate-y-0 active:scale-95"
                 style={{
                   transition: "all 0.5s cubic-bezier(0.86, 0, 0.07, 1)",
                 }}
               >
-                Contact Us
+                <span className="relative z-10 flex items-center gap-2">
+                  <span className="tracking-wide">Contact Us</span>
+                  <svg
+                    className="h-4 w-4 transition-transform duration-500 ease-out group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
+                  </svg>
+                </span>
               </Link>
               {/* <ThemeToggler /> */}
             </div>
