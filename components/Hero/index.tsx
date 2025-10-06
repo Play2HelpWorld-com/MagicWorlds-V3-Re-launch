@@ -157,7 +157,7 @@ const Hero = () => {
   }, [gameCharacters.length]);
 
   return (
-    <section className="relative h-full w-full overflow-hidden bg-gradient-to-b from-black via-indigo-900/40 to-black pt-0 sm:pt-16 lg:min-h-[800px]">
+    <section className="relative h-full w-full overflow-hidden bg-gradient-to-b from-black via-indigo-900/40 to-black pb-12 pt-16 sm:pt-20 md:pt-24 lg:min-h-[860px] lg:pt-32">
       {/* Animated background particles */}
       <canvas ref={particlesRef} className="absolute inset-0 z-0 opacity-50" />
 
@@ -169,7 +169,7 @@ const Hero = () => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 0.5, y: 0 }}
         transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
-        className="absolute left-10 top-1/4 h-24 w-24 rotate-45 rounded bg-gradient-to-r from-cyan-500/10 to-indigo-500/50 blur-xl"
+        className="absolute left-4 top-1/4 h-16 w-16 rotate-45 rounded bg-gradient-to-r from-cyan-500/10 to-indigo-500/50 blur-xl sm:h-20 sm:w-20 md:left-10 md:h-24 md:w-24"
       />
 
       <motion.div
@@ -181,25 +181,25 @@ const Hero = () => {
           repeatType: "reverse",
           delay: 0.5,
         }}
-        className="absolute right-20 top-1/3 h-32 w-32 rounded-full bg-gradient-to-r from-indigo-500/50 to-sky-500/10 blur-xl"
+        className="absolute right-4 top-1/3 h-20 w-20 rounded-full bg-gradient-to-r from-indigo-500/50 to-sky-500/10 blur-xl sm:h-24 sm:w-24 md:right-20 md:h-32 md:w-32"
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-8 lg:grid-cols-2">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 md:py-16 lg:px-8 lg:py-20">
+        <div className="grid items-center gap-8 md:gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left column: Text content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="items-center text-center"
+            className="items-center text-center lg:text-left"
           >
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="inline-block rounded-lg bg-gradient-to-r from-indigo-500/90 via-purple-500/85 to-pink-500/90 bg-clip-text px-4 py-1 text-transparent"
+              className="inline-block rounded-lg bg-gradient-to-r from-indigo-500/90 via-purple-500/85 to-pink-500/90 bg-clip-text px-3 py-1 text-transparent sm:px-4"
             >
-              <span className="text-lg font-bold tracking-wider">
+              <span className="text-sm font-bold tracking-wider sm:text-base lg:text-lg">
                 A NEW JOURNEY
               </span>
             </motion.div>
@@ -208,7 +208,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="mt-4 bg-gradient-to-r from-cyan-300 via-white to-purple-300 bg-clip-text text-4xl font-extrabold leading-tight tracking-tighter text-transparent sm:text-5xl"
+              className="mt-3 bg-gradient-to-r from-cyan-300 via-white to-purple-300 bg-clip-text text-3xl font-extrabold leading-tight tracking-tighter text-transparent sm:mt-4 sm:text-4xl md:text-5xl lg:text-6xl"
               style={{ fontFamily: "'Oswald', sans-serif" }}
             >
               MAGIC
@@ -222,7 +222,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
               style={{ fontFamily: "'Press Start 2P', cursive" }}
-              className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-gray-300"
+              className="mx-auto mt-4 max-w-xl px-4 text-xs leading-relaxed text-gray-300 sm:mt-6 sm:px-0 sm:text-sm md:text-base lg:text-lg"
             >
               Magic Worlds – Love, Laugh, Learn, Lucrative. Welcome to Magic
               Worlds, a free, family-friendly, and open-source universe where
@@ -233,14 +233,14 @@ const Hero = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1 }}
-              className="mt-10 flex flex-wrap items-center justify-center gap-4"
+              className="mt-6 flex flex-col flex-wrap items-center justify-center gap-3 sm:mt-8 sm:flex-row sm:gap-4 md:mt-10 lg:justify-start"
             >
               <ClaimButton />
 
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="via-transparentcto-indigo-600/20 rounded-3xl border-2 border-indigo-700 bg-gradient-to-r from-indigo-500/10 px-8 py-4 font-bold text-white transition-all duration-300 hover:bg-indigo-900/30"
+                className="via-transparentcto-indigo-600/20 rounded-3xl border-2 border-indigo-700 bg-gradient-to-r from-indigo-500/10 px-6 py-3 text-sm font-bold text-white transition-all duration-300 hover:bg-indigo-900/30 sm:px-8 sm:py-4 sm:text-base"
               >
                 EXPLORE WORLDS
               </motion.button>
@@ -250,7 +250,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.2 }}
-              className="mt-8 hidden items-center justify-center space-x-2 text-gray-400 sm:flex"
+              className="mt-6 hidden items-center justify-center space-x-2 text-sm text-gray-400 sm:mt-8 sm:flex md:text-base lg:justify-start"
             >
               <div className="flex -space-x-2">
                 {[1, 2, 3, 4].map((i) => (
@@ -277,7 +277,7 @@ const Hero = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="relative mt-10 lg:mt-0"
+            className="relative mt-8 sm:mt-10 lg:mt-0"
           >
             {/* Hexagon frame */}
             <div className="animate-slow-spin absolute inset-0 z-0">
@@ -339,7 +339,7 @@ const Hero = () => {
             </div>
 
             {/* Rotating 3D game card */}
-            <div className="relative flex h-96 w-full items-center justify-center">
+            <div className="relative flex h-80 w-full items-center justify-center sm:h-96 md:h-[450px] lg:h-96">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeCharacter}
@@ -350,8 +350,8 @@ const Hero = () => {
                   className="relative h-full w-full"
                 >
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="relative h-[350px] w-[280px] overflow-hidden rounded-2xl bg-gradient-to-b from-indigo-900/20 via-indigo-800/10 to-indigo-950/50 p-1 shadow-2xl backdrop-blur-sm">
-                      <div className="h-full w-full rounded-xl bg-transparent p-4">
+                    <div className="relative h-[280px] w-[220px] overflow-hidden rounded-2xl bg-gradient-to-b from-indigo-900/20 via-indigo-800/10 to-indigo-950/50 p-1 shadow-2xl backdrop-blur-sm sm:h-[320px] sm:w-[250px] md:h-[380px] md:w-[300px] lg:h-[350px] lg:w-[280px]">
+                      <div className="h-full w-full rounded-xl bg-transparent p-3 sm:p-4">
                         {/* <div className="mb-2 flex items-center justify-between">
                           <span className="rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-sm font-bold text-transparent">
                             LEGENDARY
@@ -368,7 +368,7 @@ const Hero = () => {
                           </div>
                         </div> */}
 
-                        <div className="relative h-[200px] w-full overflow-hidden rounded-lg">
+                        <div className="relative h-[150px] w-full overflow-hidden rounded-lg sm:h-[180px] md:h-[220px] lg:h-[200px]">
                           <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/80 to-transparent shadow-xl"></div>
                           <Image
                             src={gameCharacters[activeCharacter].src}
@@ -405,8 +405,8 @@ const Hero = () => {
                           </div>
                         </div> */}
 
-                        <div className="mt-5">
-                          <div className="mb-1 flex justify-between text-xs">
+                        <div className="mt-3 sm:mt-4 md:mt-5">
+                          <div className="mb-1 flex justify-between text-[10px] sm:text-xs">
                             <span className="text-indigo-400">
                               ACHIEVEMENTS
                             </span>
@@ -429,7 +429,7 @@ const Hero = () => {
                         <motion.button
                           whileHover={{ scale: 1.03 }}
                           whileTap={{ scale: 0.97 }}
-                          className="mt-4 w-full rounded-lg bg-gradient-to-r from-indigo-500 via-indigo-600 to-indigo-700 py-2 text-sm font-bold text-white"
+                          className="mt-3 w-full rounded-lg bg-gradient-to-r from-indigo-500 via-indigo-600 to-indigo-700 py-2 text-xs font-bold text-white sm:mt-4 sm:text-sm"
                         >
                           {gameCharacters[activeCharacter].name} NOW
                         </motion.button>
@@ -440,7 +440,7 @@ const Hero = () => {
               </AnimatePresence>
 
               {/* Character selection dots */}
-              <div className="absolute bottom-0 left-1/2 flex -translate-x-1/2 space-x-2">
+              <div className="absolute -bottom-2 left-1/2 flex -translate-x-1/2 space-x-2 sm:bottom-0">
                 {gameCharacters.map((_, index) => (
                   <button
                     key={index}
@@ -464,7 +464,7 @@ const Hero = () => {
                 repeat: Infinity,
                 repeatType: "reverse",
               }}
-              className="absolute -bottom-6 -right-10 h-16 w-16"
+              className="absolute -bottom-6 -right-6 hidden h-12 w-12 sm:-right-10 sm:block sm:h-16 sm:w-16"
             >
               <Image
                 src="/images/items/coin.png"
@@ -484,7 +484,7 @@ const Hero = () => {
                 repeatType: "reverse",
                 delay: 0.3,
               }}
-              className="absolute -left-8 top-10 h-12 w-12"
+              className="absolute -left-4 top-10 hidden h-10 w-10 sm:-left-8 sm:block sm:h-12 sm:w-12"
             >
               <Image
                 src="/images/items/gem.png"
@@ -504,7 +504,7 @@ const Hero = () => {
                 repeatType: "reverse",
                 delay: 0.7,
               }}
-              className="absolute -top-4 right-20 h-14 w-14"
+              className="absolute -top-4 right-12 hidden h-12 w-12 sm:right-20 sm:block sm:h-14 sm:w-14"
             >
               <Image
                 src="/images/items/potion.png"
