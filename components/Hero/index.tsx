@@ -42,7 +42,7 @@ const Hero = () => {
         this.size = Math.random() * 3 + 1;
         this.speedX = Math.random() * 2 - 1;
         this.speedY = Math.random() * 2 - 1;
-        this.color = `rgba(${Math.random() * 100 + 155}, ${Math.random() * 100 + 155}, 255, ${Math.random() * 0.5 + 0.5})`;
+        this.color = `rgba(${Math.random() * 80 + 100}, ${Math.random() * 50 + 50}, ${Math.random() * 80 + 175}, ${Math.random() * 0.4 + 0.3})`;
       }
 
       update() {
@@ -91,7 +91,7 @@ const Hero = () => {
           if (distance < 100) {
             if (ctx) {
               ctx.beginPath();
-              ctx.strokeStyle = `rgba(100, 150, 255, ${0.7 - distance / 100})`;
+              ctx.strokeStyle = `rgba(139, 92, 246, ${0.5 - distance / 100})`;
               ctx.lineWidth = 0.5;
               ctx.moveTo(particles[i].x, particles[i].y);
               ctx.lineTo(particles[j].x, particles[j].y);
@@ -157,19 +157,19 @@ const Hero = () => {
   }, [gameCharacters.length]);
 
   return (
-    <section className="relative h-full w-full overflow-hidden bg-gradient-to-b from-black via-indigo-900/40 to-black pb-12 pt-16 sm:pt-20 md:pt-24 lg:min-h-[860px] lg:pt-32">
+    <section className="relative h-full w-full overflow-hidden bg-gradient-to-b from-[#0a0015] via-[#1a0b2e] to-[#0a0015] pb-12 pt-16 sm:pt-20 md:pt-24 lg:min-h-[900px] lg:pt-32">
       {/* Animated background particles */}
-      <canvas ref={particlesRef} className="absolute inset-0 z-0 opacity-50" />
+      <canvas ref={particlesRef} className="absolute inset-0 z-0 opacity-40" />
 
       {/* Radial glow effect */}
-      <div className="animate-pulse-slow absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,rgba(82,63,255,0.15),transparent_70%)]" />
+      <div className="animate-pulse-slow absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.15),rgba(168,85,247,0.08),transparent_70%)]" />
 
       {/* Floating geometric shapes */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 0.5, y: 0 }}
         transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
-        className="absolute left-4 top-1/4 h-16 w-16 rotate-45 rounded bg-gradient-to-r from-cyan-500/10 to-indigo-500/50 blur-xl sm:h-20 sm:w-20 md:left-10 md:h-24 md:w-24"
+        className="absolute left-4 top-1/4 h-16 w-16 rotate-45 rounded bg-gradient-to-r from-purple-800/40 to-fuchsia-800/50 blur-2xl sm:h-20 sm:w-20 md:left-10 md:h-24 md:w-24"
       />
 
       <motion.div
@@ -181,7 +181,7 @@ const Hero = () => {
           repeatType: "reverse",
           delay: 0.5,
         }}
-        className="absolute right-4 top-1/3 h-20 w-20 rounded-full bg-gradient-to-r from-indigo-500/50 to-sky-500/10 blur-xl sm:h-24 sm:w-24 md:right-20 md:h-32 md:w-32"
+        className="absolute right-4 top-1/3 h-20 w-20 rounded-full bg-gradient-to-r from-fuchsia-800/50 to-purple-900/40 blur-2xl sm:h-24 sm:w-24 md:right-20 md:h-32 md:w-32"
       />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 md:py-16 lg:px-8 lg:py-20">
@@ -197,9 +197,9 @@ const Hero = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="inline-block rounded-lg bg-gradient-to-r from-indigo-500/90 via-purple-500/85 to-pink-500/90 bg-clip-text px-3 py-1 text-transparent sm:px-4"
+              className="inline-block rounded-lg bg-gradient-to-r from-purple-700 via-fuchsia-700 to-purple-700 bg-clip-text px-3 py-1 text-transparent sm:px-4"
             >
-              <span className="text-sm font-bold tracking-wider sm:text-base lg:text-lg">
+              <span className="text-sm font-bold tracking-wider drop-shadow-[0_0_15px_rgba(168,85,247,0.9)] sm:text-base lg:text-lg">
                 A NEW JOURNEY
               </span>
             </motion.div>
@@ -208,11 +208,13 @@ const Hero = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="mt-3 bg-gradient-to-r from-cyan-300 via-white to-purple-300 bg-clip-text text-3xl font-extrabold leading-tight tracking-tighter text-transparent sm:mt-4 sm:text-4xl md:text-5xl lg:text-6xl"
+              className="mt-3 bg-clip-text text-3xl font-extrabold leading-tight tracking-tighter text-transparent sm:mt-4 sm:text-4xl md:text-5xl lg:text-6xl"
               style={{ fontFamily: "'Oswald', sans-serif" }}
             >
-              MAGIC
-              <span className="text-neon-blue drop-shadow-glow bg-gradient-to-r from-cyan-300 via-white to-purple-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-600 bg-clip-text text-transparent">
+                MAGIC
+              </span>{" "}
+              <span className="drop-shadow-glow bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-500 bg-clip-text text-transparent">
                 WORLDS
               </span>
             </motion.h1>
@@ -222,7 +224,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
               style={{ fontFamily: "'Press Start 2P', cursive" }}
-              className="mx-auto mt-4 max-w-xl px-4 text-xs leading-relaxed text-gray-300 sm:mt-6 sm:px-0 sm:text-sm md:text-base lg:text-lg"
+              className="mx-auto mt-4 max-w-xl px-4 text-xs leading-relaxed text-gray-500 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] sm:mt-6 sm:px-0 sm:text-sm md:text-base lg:text-lg"
             >
               Magic Worlds – Love, Laugh, Learn, Lucrative. Welcome to Magic
               Worlds, a free, family-friendly, and open-source universe where
@@ -240,7 +242,7 @@ const Hero = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="via-transparentcto-indigo-600/20 rounded-3xl border-2 border-indigo-700 bg-gradient-to-r from-indigo-500/10 px-6 py-3 text-sm font-bold text-white transition-all duration-300 hover:bg-indigo-900/30 sm:px-8 sm:py-4 sm:text-base"
+                className="rounded-3xl border-2 border-purple-700/70 bg-gradient-to-r from-purple-900/50 to-fuchsia-900/40 px-6 py-3 text-sm font-bold text-purple-300 backdrop-blur-sm transition-all duration-300 hover:border-fuchsia-600 hover:from-purple-800/60 hover:to-fuchsia-800/50 hover:text-fuchsia-200 hover:shadow-[0_0_30px_rgba(168,85,247,0.6)] sm:px-8 sm:py-4 sm:text-base"
               >
                 EXPLORE WORLDS
               </motion.button>
@@ -250,13 +252,13 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.2 }}
-              className="mt-6 hidden items-center justify-center space-x-2 text-sm text-gray-400 sm:mt-8 sm:flex md:text-base lg:justify-start"
+              className="mt-6 hidden items-center justify-center space-x-2 text-sm text-gray-600 sm:mt-8 sm:flex md:text-base lg:justify-start"
             >
               <div className="flex -space-x-2">
                 {[1, 2, 3, 4].map((i) => (
                   <div
                     key={i}
-                    className="h-8 w-8 overflow-hidden rounded-full border-2 border-purple-800"
+                    className="h-8 w-8 overflow-hidden rounded-full border-2 border-purple-800/90 shadow-[0_0_10px_rgba(168,85,247,0.5)]"
                   >
                     <Image
                       src={`/images/user/user-0${i}.png`}
@@ -268,7 +270,7 @@ const Hero = () => {
                   </div>
                 ))}
               </div>
-              <span>100+ players have joined today</span>
+              <span>100+ users have engaged today</span>
             </motion.div>
           </motion.div>
 
@@ -297,9 +299,9 @@ const Hero = () => {
                     x2="100%"
                     y2="100%"
                   >
-                    <stop offset="0%" stopColor="#4F46E5" />
+                    <stop offset="0%" stopColor="#7C3AED" />
                     <stop offset="50%" stopColor="#D946EF" />
-                    <stop offset="100%" stopColor="#2563EB" />
+                    <stop offset="100%" stopColor="#A855F7" />
                   </linearGradient>
                 </defs>
               </svg>
@@ -313,7 +315,7 @@ const Hero = () => {
                   cy="200"
                   r="150"
                   fill="none"
-                  stroke="rgba(147, 51, 234, 0.5)"
+                  stroke="rgba(168, 85, 247, 0.3)"
                   strokeWidth="1"
                   className="animate-pulse-slow"
                 />
@@ -322,7 +324,7 @@ const Hero = () => {
                   cy="200"
                   r="120"
                   fill="none"
-                  stroke="rgba(79, 70, 229, 0.5)"
+                  stroke="rgba(217, 70, 239, 0.3)"
                   strokeWidth="1"
                   className="animate-pulse-slow animation-delay-500"
                 />
@@ -331,7 +333,7 @@ const Hero = () => {
                   cy="200"
                   r="90"
                   fill="none"
-                  stroke="rgba(219, 39, 119, 0.5)"
+                  stroke="rgba(168, 85, 247, 0.3)"
                   strokeWidth="1"
                   className="animate-pulse-slow animation-delay-1000"
                 />
@@ -350,7 +352,7 @@ const Hero = () => {
                   className="relative h-full w-full"
                 >
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="relative h-[280px] w-[220px] overflow-hidden rounded-2xl bg-gradient-to-b from-indigo-900/20 via-indigo-800/10 to-indigo-950/50 p-1 shadow-2xl backdrop-blur-sm sm:h-[320px] sm:w-[250px] md:h-[380px] md:w-[300px] lg:h-[350px] lg:w-[280px]">
+                    <div className="relative h-[280px] w-[220px] overflow-hidden rounded-2xl border border-purple-900/50 bg-gradient-to-b from-[#1a0b2e]/80 via-[#2d1b4e]/60 to-[#1a0b2e]/90 p-1 shadow-2xl shadow-purple-950/60 backdrop-blur-sm sm:h-[320px] sm:w-[250px] md:h-[380px] md:w-[300px] lg:h-[350px] lg:w-[280px]">
                       <div className="h-full w-full rounded-xl bg-transparent p-3 sm:p-4">
                         {/* <div className="mb-2 flex items-center justify-between">
                           <span className="rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-sm font-bold text-transparent">
@@ -368,8 +370,8 @@ const Hero = () => {
                           </div>
                         </div> */}
 
-                        <div className="relative h-[150px] w-full overflow-hidden rounded-lg sm:h-[180px] md:h-[220px] lg:h-[200px]">
-                          <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/80 to-transparent shadow-xl"></div>
+                        <div className="relative h-[150px] w-full overflow-hidden rounded-lg shadow-lg shadow-purple-950/70 sm:h-[180px] md:h-[220px] lg:h-[200px]">
+                          <div className="from-[#1a0b2e]/98 absolute inset-0 z-10 bg-gradient-to-t via-[#2d1b4e]/50 to-transparent shadow-xl"></div>
                           <Image
                             src={gameCharacters[activeCharacter].src}
                             alt={gameCharacters[activeCharacter].name}
@@ -407,16 +409,16 @@ const Hero = () => {
 
                         <div className="mt-3 sm:mt-4 md:mt-5">
                           <div className="mb-1 flex justify-between text-[10px] sm:text-xs">
-                            <span className="text-indigo-400">
+                            <span className="font-semibold text-purple-400 drop-shadow-[0_0_10px_rgba(168,85,247,0.8)]">
                               ACHIEVEMENTS
                             </span>
-                            <span className="text-indigo-400">
+                            <span className="font-semibold text-fuchsia-400 drop-shadow-[0_0_10px_rgba(217,70,239,0.8)]">
                               {gameCharacters[activeCharacter].progress}/100
                             </span>
                           </div>
-                          <div className="mb-2 mt-1 h-2 w-full overflow-hidden rounded-full bg-gray-700">
+                          <div className="mb-2 mt-1 h-2 w-full overflow-hidden rounded-full border border-purple-900/50 bg-[#1a0b2e]/90 shadow-inner shadow-purple-950/70">
                             <motion.div
-                              className="h-full bg-gradient-to-r from-red-400 to-red-600"
+                              className="h-full bg-gradient-to-r from-purple-600 via-fuchsia-600 to-purple-700 shadow-[0_0_15px_rgba(168,85,247,0.9)]"
                               initial={{ width: "0%" }}
                               animate={{
                                 width: `${gameCharacters[activeCharacter].progress}%`,
@@ -429,7 +431,7 @@ const Hero = () => {
                         <motion.button
                           whileHover={{ scale: 1.03 }}
                           whileTap={{ scale: 0.97 }}
-                          className="mt-3 w-full rounded-lg bg-gradient-to-r from-indigo-500 via-indigo-600 to-indigo-700 py-2 text-xs font-bold text-white sm:mt-4 sm:text-sm"
+                          className="mt-3 w-full rounded-lg bg-gradient-to-r from-purple-700 via-fuchsia-700 to-purple-800 py-2 text-xs font-bold text-purple-200 shadow-lg shadow-purple-950/70 transition-all duration-300 hover:from-purple-600 hover:via-fuchsia-600 hover:to-purple-700 hover:shadow-purple-900/80 sm:mt-4 sm:text-sm"
                         >
                           {gameCharacters[activeCharacter].name} NOW
                         </motion.button>
@@ -447,8 +449,8 @@ const Hero = () => {
                     onClick={() => setActiveCharacter(index)}
                     className={`h-3 w-3 rounded-full transition-all duration-300 ${
                       activeCharacter === index
-                        ? "scale-125 bg-white"
-                        : "bg-gray-600 hover:bg-gray-400"
+                        ? "scale-125 bg-gradient-to-r from-purple-500 to-fuchsia-500 shadow-[0_0_12px_rgba(168,85,247,0.9)]"
+                        : "bg-purple-900/70 shadow-[0_0_5px_rgba(168,85,247,0.4)] hover:bg-purple-700/80"
                     }`}
                   />
                 ))}
@@ -633,14 +635,15 @@ const Hero = () => {
         }
 
         .text-neon-blue {
-          color: #4f46e5;
+          color: #a855f7;
           text-shadow:
-            0 0 5px rgba(79, 70, 229, 0.7),
-            0 0 20px rgba(79, 70, 229, 0.5);
+            0 0 15px rgba(168, 85, 247, 1),
+            0 0 30px rgba(168, 85, 247, 0.8),
+            0 0 45px rgba(168, 85, 247, 0.6);
         }
 
         .drop-shadow-glow {
-          filter: drop-shadow(0 0 8px rgba(79, 70, 229, 0.5));
+          filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.9));
         }
       `}</style>
     </section>
