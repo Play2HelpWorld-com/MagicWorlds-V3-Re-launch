@@ -172,32 +172,9 @@ const Hero = () => {
   }, [cryptoTokens.length]);
 
   return (
-    <section className="relative h-full w-full overflow-hidden bg-gradient-to-b from-[#0a0015] via-[#1a0b2e] to-[#0a0015] pb-12 pt-16 sm:pt-20 md:pt-24 lg:min-h-[900px] lg:pt-32">
+    <section className="relative h-full w-full overflow-hidden bg-transparent pb-12 pt-16 sm:pt-20 md:pt-24 lg:min-h-[800px] lg:pt-32">
       {/* Animated background particles */}
       <canvas ref={particlesRef} className="absolute inset-0 z-0 opacity-40" />
-
-      {/* Radial glow effect */}
-      <div className="animate-pulse-slow absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.15),rgba(168,85,247,0.08),transparent_70%)]" />
-
-      {/* Floating geometric shapes */}
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 0.5, y: 0 }}
-        transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
-        className="absolute left-4 top-1/4 h-16 w-16 rotate-45 rounded bg-gradient-to-r from-purple-800/40 to-fuchsia-800/50 blur-2xl sm:h-20 sm:w-20 md:left-10 md:h-24 md:w-24"
-      />
-
-      <motion.div
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 0.5, y: 0 }}
-        transition={{
-          duration: 2.5,
-          repeat: Infinity,
-          repeatType: "reverse",
-          delay: 0.5,
-        }}
-        className="absolute right-4 top-1/3 h-20 w-20 rounded-full bg-gradient-to-r from-fuchsia-800/50 to-purple-900/40 blur-2xl sm:h-24 sm:w-24 md:right-20 md:h-32 md:w-32"
-      />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 md:py-16 lg:px-8 lg:py-20">
         <div className="grid items-center gap-8 md:gap-12 lg:grid-cols-2 lg:gap-16">
@@ -212,7 +189,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="inline-block rounded-lg bg-gradient-to-r from-purple-700 via-fuchsia-700 to-purple-700 bg-clip-text px-3 py-1 text-transparent sm:px-4"
+              className="inline-block rounded-lg bg-gradient-to-r from-purple-700 via-fuchsia-700 to-purple-700 bg-clip-text  py-1 text-transparent "
             >
               <span className="text-sm font-bold tracking-wider drop-shadow-[0_0_15px_rgba(168,85,247,0.9)] sm:text-base lg:text-lg">
                 A NEW JOURNEY
@@ -369,7 +346,7 @@ const Hero = () => {
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="relative h-[300px] w-[300px] sm:h-[340px] sm:w-[340px] md:h-[400px] md:w-[400px] lg:h-[360px] lg:w-[360px]">
                       {/* Outer holographic ring */}
-                      <motion.div
+                      {/* <motion.div
                         animate={{ rotate: 360 }}
                         transition={{
                           duration: 20,
@@ -380,10 +357,10 @@ const Hero = () => {
                         style={{
                           boxShadow: `0 0 40px ${cryptoTokens[activeToken].glowColor}`,
                         }}
-                      />
+                      /> */}
 
                       {/* Middle holographic ring */}
-                      <motion.div
+                      {/* <motion.div
                         animate={{ rotate: -360 }}
                         transition={{
                           duration: 15,
@@ -394,7 +371,7 @@ const Hero = () => {
                         style={{
                           boxShadow: `0 0 30px ${cryptoTokens[activeToken].glowColor}`,
                         }}
-                      />
+                      /> */}
 
                       {/* Main token container */}
                       <motion.div

@@ -93,19 +93,11 @@ const Header = () => {
     >
       <div className="mx-auto mt-3 max-w-7xl px-4 transition-all duration-500 ease-out md:px-6 lg:px-8">
         <div
-          className={`relative mx-auto items-center justify-between border border-white/40 bg-gradient-to-b from-white/90
-            to-white/70 px-2
-            py-1 backdrop-blur-2xl backdrop-saturate-150 transition-all duration-700
-            ease-[cubic-bezier(0.86,0,0.07,1)] dark:border-white/10 dark:from-black/90
-            dark:to-black/70 md:px-6 xl:flex
-            ${
-              stickyMenu
-                ? "scale-[0.98] rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
-                : "scale-100 rounded-[2.5rem] shadow-[0_4px_24px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.3)]"
-            }
-            hover:scale-[0.99] hover:shadow-[0_12px_40px_rgba(0,0,0,0.15)]
-            dark:hover:shadow-[0_12px_40px_rgba(0,0,0,0.5)]
-          `}
+          className={`relative mx-auto items-center justify-between border border-white/20 bg-black/95 px-2 py-1 backdrop-blur-2xl backdrop-saturate-150 transition-all duration-700 ease-[cubic-bezier(0.86,0,0.07,1)] md:px-6 xl:flex ${
+            stickyMenu
+              ? "scale-[0.98] rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.6)]"
+              : "scale-100 rounded-[2.5rem] shadow-[0_4px_24px_rgba(0,0,0,0.4)]"
+          } hover:scale-[0.99] hover:shadow-[0_12px_40px_rgba(0,0,0,0.7)]`}
           style={{
             transition: "all 0.7s cubic-bezier(0.86, 0, 0.07, 1)",
             willChange: "transform, box-shadow, border-radius",
@@ -136,37 +128,27 @@ const Header = () => {
             {/* <!-- Hamburger Toggle BTN --> */}
             <button
               aria-label="hamburger Toggler"
-              className="block rounded-full p-2 transition-all duration-300 ease-out hover:bg-black/5 active:scale-90 dark:hover:bg-white/5 xl:hidden"
+              className="block rounded-full p-2 transition-all duration-300 ease-out hover:bg-white/10 active:scale-90 xl:hidden"
               onClick={() => setNavigationOpen(!navigationOpen)}
             >
               <span className="relative block h-5.5 w-5.5 cursor-pointer">
                 <span className="absolute right-0 block h-full w-full">
                   <span
-                    className={`relative left-0 top-0 my-1 block h-0.5 rounded-sm bg-black transition-all
-                      duration-500 ease-[cubic-bezier(0.86,0,0.07,1)] dark:bg-white
-                      ${!navigationOpen ? "!w-full delay-300" : "w-0"}`}
+                    className={`relative left-0 top-0 my-1 block h-0.5 rounded-sm bg-white transition-all duration-500 ease-[cubic-bezier(0.86,0,0.07,1)] ${!navigationOpen ? "!w-full delay-300" : "w-0"}`}
                   ></span>
                   <span
-                    className={`relative left-0 top-0 my-1 block h-0.5 rounded-sm bg-black transition-all
-                      delay-75 duration-500 ease-[cubic-bezier(0.86,0,0.07,1)] dark:bg-white
-                      ${!navigationOpen ? "delay-400 !w-full" : "w-0"}`}
+                    className={`relative left-0 top-0 my-1 block h-0.5 rounded-sm bg-white transition-all delay-75 duration-500 ease-[cubic-bezier(0.86,0,0.07,1)] ${!navigationOpen ? "delay-400 !w-full" : "w-0"}`}
                   ></span>
                   <span
-                    className={`relative left-0 top-0 my-1 block h-0.5 rounded-sm bg-black transition-all
-                      delay-150 duration-500 ease-[cubic-bezier(0.86,0,0.07,1)] dark:bg-white
-                      ${!navigationOpen ? "!w-full delay-500" : "w-0"}`}
+                    className={`relative left-0 top-0 my-1 block h-0.5 rounded-sm bg-white transition-all delay-150 duration-500 ease-[cubic-bezier(0.86,0,0.07,1)] ${!navigationOpen ? "!w-full delay-500" : "w-0"}`}
                   ></span>
                 </span>
                 <span className="du-block absolute right-0 h-full w-full rotate-45">
                   <span
-                    className={`absolute left-2.5 top-0 block h-full w-0.5 rounded-sm bg-black transition-all
-                      delay-300 duration-500 ease-[cubic-bezier(0.86,0,0.07,1)] dark:bg-white
-                      ${!navigationOpen ? "!h-0 delay-[0]" : "h-full"}`}
+                    className={`absolute left-2.5 top-0 block h-full w-0.5 rounded-sm bg-white transition-all delay-300 duration-500 ease-[cubic-bezier(0.86,0,0.07,1)] ${!navigationOpen ? "!h-0 delay-[0]" : "h-full"}`}
                   ></span>
                   <span
-                    className={`delay-400 absolute left-0 top-2.5 block h-0.5 w-full rounded-sm bg-black
-                      transition-all duration-500 ease-[cubic-bezier(0.86,0,0.07,1)] dark:bg-white
-                      ${!navigationOpen ? "!h-0 delay-200" : "h-0.5"}`}
+                    className={`delay-400 absolute left-0 top-2.5 block h-0.5 w-full rounded-sm bg-white transition-all duration-500 ease-[cubic-bezier(0.86,0,0.07,1)] ${!navigationOpen ? "!h-0 delay-200" : "h-0.5"}`}
                   ></span>
                 </span>
               </span>
@@ -176,19 +158,22 @@ const Header = () => {
 
           {/* Nav Menu Start   */}
           <div
-            className={`w-full items-center justify-between transition-all duration-700 ease-[cubic-bezier(0.86,0,0.07,1)] xl:visible
-              xl:flex xl:h-auto xl:w-full
-              ${
-                navigationOpen
-                  ? "navbar !visible mt-4 h-auto max-h-[400px] scale-100 rounded-2xl bg-white/95 p-6 opacity-100 shadow-[0_8px_32px_rgba(0,0,0,0.12)] backdrop-blur-2xl dark:bg-black/95 dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)] xl:mt-0 xl:h-auto xl:bg-transparent xl:p-0 xl:shadow-none xl:dark:bg-transparent"
-                  : "invisible h-0 scale-95 opacity-0 xl:visible xl:scale-100 xl:opacity-100"
-              }`}
+            className={`w-full items-center justify-between transition-all duration-700 ease-[cubic-bezier(0.86,0,0.07,1)] xl:visible xl:flex xl:h-auto xl:w-full ${
+              navigationOpen
+                ? "navbar !visible mt-4 h-auto max-h-[400px] scale-100 rounded-2xl bg-black/95 p-6 opacity-100 shadow-[0_8px_32px_rgba(0,0,0,0.6)] backdrop-blur-2xl xl:mt-0 xl:h-auto xl:bg-transparent xl:p-0 xl:shadow-none"
+                : "invisible h-0 scale-95 opacity-0 xl:visible xl:scale-100 xl:opacity-100"
+            }`}
             style={{
               transition: "all 0.7s cubic-bezier(0.86, 0, 0.07, 1)",
             }}
           >
             <nav>
-              <ul className="flex flex-col gap-5 font-bold xl:flex-row xl:items-center xl:gap-10">
+              <ul
+                className="flex flex-col gap-5 font-bold xl:flex-row xl:items-center xl:gap-10"
+                style={{
+                  fontFamily: "'Orbitron', 'Rajdhani', 'Exo 2', sans-serif",
+                }}
+              >
                 {menuData.map((menuItem, key) => (
                   <li
                     onClick={(e) => handleLinkClick(e, menuItem)}
@@ -197,11 +182,11 @@ const Header = () => {
                   >
                     {menuItem.submenu ? (
                       <>
-                        <button className="flex cursor-pointer items-center justify-between gap-3 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 bg-clip-text text-base font-semibold tracking-wide text-gray-700 transition-all duration-500 ease-out [text-shadow:0_2px_8px_rgba(0,0,0,0.1)] hover:translate-x-1 hover:from-indigo-500 hover:via-purple-500 hover:to-pink-500 hover:text-transparent dark:from-gray-100 dark:via-white dark:to-gray-100 dark:text-gray-200 dark:[text-shadow:0_2px_8px_rgba(255,255,255,0.1)]">
+                        <button className="flex cursor-pointer items-center justify-between gap-3 text-base font-bold uppercase tracking-wider text-white transition-all duration-500 ease-out hover:translate-x-1 hover:bg-gradient-to-r hover:from-indigo-400 hover:via-purple-400 hover:to-pink-400 hover:bg-clip-text hover:text-transparent">
                           {menuItem.title}
                           <span className="transition-transform duration-500 ease-out group-hover:rotate-180 group-hover:scale-110">
                             <svg
-                              className="h-3 w-3 cursor-pointer fill-gray-600 transition-all duration-500 ease-out group-hover:fill-indigo-500 dark:fill-gray-400"
+                              className="h-3 w-3 cursor-pointer fill-white transition-all duration-500 ease-out group-hover:fill-indigo-400"
                               xmlns="http://www.w3.org/2000/svg"
                               viewBox="0 0 512 512"
                             >
@@ -226,7 +211,11 @@ const Header = () => {
                               >
                                 <Link
                                   href={item.path || "#"}
-                                  className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-sm font-medium text-gray-600 transition-all duration-500 ease-out hover:text-transparent dark:text-gray-300"
+                                  className="text-sm font-bold uppercase tracking-wide text-white/80 transition-all duration-500 ease-out hover:bg-gradient-to-r hover:from-indigo-400 hover:via-purple-400 hover:to-pink-400 hover:bg-clip-text hover:text-transparent"
+                                  style={{
+                                    fontFamily:
+                                      "'Orbitron', 'Rajdhani', 'Exo 2', sans-serif",
+                                  }}
                                 >
                                   {item.title}
                                 </Link>
@@ -238,11 +227,15 @@ const Header = () => {
                     ) : (
                       <Link
                         href={`${menuItem.path}`}
-                        className={`relative inline-block text-base font-semibold tracking-wide transition-all duration-500 ease-out hover:translate-y-[-2px] hover:scale-105 active:scale-95 ${
+                        className={`relative inline-block text-base font-bold uppercase tracking-wider transition-all duration-500 ease-out hover:translate-y-[-2px] hover:scale-105 active:scale-95 ${
                           pathUrl === menuItem.path
-                            ? "bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-[0_0_8px_rgba(99,102,241,0.3)]"
-                            : "bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 bg-clip-text text-gray-700 hover:from-indigo-500 hover:via-purple-500 hover:to-pink-500 hover:text-transparent dark:from-gray-100 dark:via-white dark:to-gray-100 dark:text-gray-200"
+                            ? "bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent drop-shadow-[0_0_8px_rgba(99,102,241,0.5)]"
+                            : "text-white hover:bg-gradient-to-r hover:from-indigo-400 hover:via-purple-400 hover:to-pink-400 hover:bg-clip-text hover:text-transparent"
                         }`}
+                        style={{
+                          fontFamily:
+                            "'Orbitron', 'Rajdhani', 'Exo 2', sans-serif",
+                        }}
                       >
                         <span className="relative inline-flex items-center">
                           <span className="relative z-10">
@@ -266,13 +259,14 @@ const Header = () => {
               {/* <ProfileModal navOpen={navigationOpen} setNavopen = {setNavigationOpen}/> */}
               <Link
                 href="/support"
-                className="group relative overflow-hidden rounded-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 px-6 py-2.5 font-bold text-white shadow-lg shadow-indigo-500/50 backdrop-blur-xl transition-all duration-500 ease-[cubic-bezier(0.86,0,0.07,1)] before:absolute before:inset-0 before:bg-gradient-to-r before:from-pink-600 before:via-purple-600 before:to-indigo-600 before:opacity-0 before:transition-opacity before:duration-500 hover:-translate-y-0.5 hover:scale-105 hover:shadow-[0_8px_32px_rgba(99,102,241,0.6)] hover:before:opacity-100 active:translate-y-0 active:scale-95"
+                className="group relative overflow-hidden rounded-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 px-6 py-2.5 font-black uppercase tracking-wider text-white shadow-lg shadow-indigo-500/50 backdrop-blur-xl transition-all duration-500 ease-[cubic-bezier(0.86,0,0.07,1)] before:absolute before:inset-0 before:bg-gradient-to-r before:from-pink-600 before:via-purple-600 before:to-indigo-600 before:opacity-0 before:transition-opacity before:duration-500 hover:-translate-y-0.5 hover:scale-105 hover:shadow-[0_8px_32px_rgba(99,102,241,0.6)] hover:before:opacity-100 active:translate-y-0 active:scale-95"
                 style={{
                   transition: "all 0.5s cubic-bezier(0.86, 0, 0.07, 1)",
+                  fontFamily: "'Orbitron', 'Rajdhani', 'Exo 2', sans-serif",
                 }}
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  <span className="tracking-wide">Contact Us</span>
+                  <span className="tracking-wider">Contact Us</span>
                   <svg
                     className="h-4 w-4 transition-transform duration-500 ease-out group-hover:translate-x-1"
                     fill="none"

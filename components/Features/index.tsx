@@ -299,49 +299,8 @@ const Feature = () => {
       <section
         id="features"
         ref={sectionRef}
-        className="relative overflow-hidden bg-gradient-to-b from-gray-900 to-black py-20 dark:from-gray-900 dark:to-black lg:py-28 xl:py-32"
+        className="relative overflow-hidden bg-transparent lg:py-28 xl:py-32"
       >
-        {/* Advanced Canvas Background */}
-        <canvas
-          ref={canvasRef}
-          className="pointer-events-none absolute inset-0 h-full w-full"
-          style={{ opacity: 0.8 }}
-        />
-
-        {/* Radial Gradient Overlay */}
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={radialGradientStyle}
-        />
-
-        {/* Diagonal Light Streaks */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute h-px opacity-20"
-              style={{
-                background:
-                  "linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.8) 50%, transparent 100%)",
-                width: "200%",
-                height: "1px",
-                left: "-50%",
-                top: `${i * 20 + 10}%`,
-                transform: `rotate(${35 - i * 5}deg)`,
-              }}
-              animate={{
-                x: ["-100%", "100%"],
-              }}
-              transition={{
-                duration: 8 + i * 2,
-                repeat: Infinity,
-                ease: "linear",
-                delay: i * 2,
-              }}
-            />
-          ))}
-        </div>
-
         <div className="relative mx-auto max-w-c-1315 px-4 md:px-8 xl:px-0">
           {/* Section Title with Animation */}
           <motion.div
