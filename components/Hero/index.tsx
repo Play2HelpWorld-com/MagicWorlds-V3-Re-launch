@@ -124,37 +124,52 @@ const Hero = () => {
     };
   }, []);
 
-  // Game characters for the carousel
-  const gameCharacters = [
+  // Crypto tokens data for the showcase - PLAY, EARN, DONATE
+  const cryptoTokens = [
     {
       id: 1,
-      name: "PLAY",
-      src: "/images/hero/character1.png",
-      progress: 80,
+      motto: "PLAY",
+      name: "PLAY TO WIN",
+      symbol: "PLAY",
+      value: "1,234.56",
+      change: "+12.5%",
+      image: "/images/hero/character1.png",
+      color: "from-purple-600 to-fuchsia-600",
+      glowColor: "rgba(66,165,255,0.6)",
     },
     {
       id: 2,
-      name: "EARN",
-      src: "/images/hero/character2.png",
-      progress: 65,
+      motto: "EARN",
+      name: "EARN REWARDS",
+      symbol: "EARN",
+      value: "789.12",
+      change: "+8.3%",
+      image: "/images/hero/character2.png",
+      color: "from-fuchsia-600 to-purple-700",
+      glowColor: "rgba(52,211,153,0.6)",
     },
     {
       id: 3,
-      name: "DONATE",
-      src: "/images/hero/character3.png",
-      progress: 90,
+      motto: "DONATE",
+      name: "DONATE TO CHARITY",
+      symbol: "DONATE",
+      value: "456.78",
+      change: "+15.7%",
+      image: "/images/hero/character3.png",
+      color: "from-purple-700 to-fuchsia-700",
+      glowColor: "rgba(239,68,68,0.6)",
     },
   ];
 
-  const [activeCharacter, setActiveCharacter] = useState(0);
+  const [activeToken, setActiveToken] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveCharacter((prev) => (prev + 1) % gameCharacters.length);
+      setActiveToken((prev) => (prev + 1) % cryptoTokens.length);
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [gameCharacters.length]);
+  }, [cryptoTokens.length]);
 
   return (
     <section className="relative h-full w-full overflow-hidden bg-gradient-to-b from-[#0a0015] via-[#1a0b2e] to-[#0a0015] pb-12 pt-16 sm:pt-20 md:pt-24 lg:min-h-[900px] lg:pt-32">
@@ -340,121 +355,166 @@ const Hero = () => {
               </svg>
             </div>
 
-            {/* Rotating 3D game card */}
+            {/* 3D Rotating Crypto Token Display */}
             <div className="relative flex h-80 w-full items-center justify-center sm:h-96 md:h-[450px] lg:h-96">
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={activeCharacter}
-                  initial={{ opacity: 0, rotateY: -90, scale: 0.8 }}
+                  key={activeToken}
+                  initial={{ opacity: 0, rotateY: -180, scale: 0.5 }}
                   animate={{ opacity: 1, rotateY: 0, scale: 1 }}
-                  exit={{ opacity: 0, rotateY: 90, scale: 0.8 }}
-                  transition={{ duration: 0.8 }}
+                  exit={{ opacity: 0, rotateY: 180, scale: 0.5 }}
+                  transition={{ duration: 1, ease: [0.86, 0, 0.07, 1] }}
                   className="relative h-full w-full"
                 >
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="relative h-[280px] w-[220px] overflow-hidden rounded-2xl border border-purple-900/50 bg-gradient-to-b from-[#1a0b2e]/80 via-[#2d1b4e]/60 to-[#1a0b2e]/90 p-1 shadow-2xl shadow-purple-950/60 backdrop-blur-sm sm:h-[320px] sm:w-[250px] md:h-[380px] md:w-[300px] lg:h-[350px] lg:w-[280px]">
-                      <div className="h-full w-full rounded-xl bg-transparent p-3 sm:p-4">
-                        {/* <div className="mb-2 flex items-center justify-between">
-                          <span className="rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-sm font-bold text-transparent">
-                            LEGENDARY
-                          </span>
-                          <div className="flex items-center space-x-1">
-                            <svg
-                              className="h-4 w-4 text-yellow-400"
-                              fill="currentColor"
-                              viewBox="0 0 20 20"
-                            >
-                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path>
-                            </svg>
-                            <span className="text-white">5.0</span>
-                          </div>
-                        </div> */}
+                    <div className="relative h-[300px] w-[300px] sm:h-[340px] sm:w-[340px] md:h-[400px] md:w-[400px] lg:h-[360px] lg:w-[360px]">
+                      {/* Outer holographic ring */}
+                      <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{
+                          duration: 20,
+                          repeat: Infinity,
+                          ease: "linear",
+                        }}
+                        className="absolute inset-0 rounded-full border-2 border-dashed border-purple-700/40"
+                        style={{
+                          boxShadow: `0 0 40px ${cryptoTokens[activeToken].glowColor}`,
+                        }}
+                      />
 
-                        <div className="relative h-[150px] w-full overflow-hidden rounded-lg shadow-lg shadow-purple-950/70 sm:h-[180px] md:h-[220px] lg:h-[200px]">
-                          <div className="from-[#1a0b2e]/98 absolute inset-0 z-10 bg-gradient-to-t via-[#2d1b4e]/50 to-transparent shadow-xl"></div>
-                          <Image
-                            src={gameCharacters[activeCharacter].src}
-                            alt={gameCharacters[activeCharacter].name}
-                            fill
-                            className="object-cover"
-                            priority
-                          />
-                        </div>
+                      {/* Middle holographic ring */}
+                      <motion.div
+                        animate={{ rotate: -360 }}
+                        transition={{
+                          duration: 15,
+                          repeat: Infinity,
+                          ease: "linear",
+                        }}
+                        className="absolute inset-4 rounded-full border border-dashed border-fuchsia-600/30"
+                        style={{
+                          boxShadow: `0 0 30px ${cryptoTokens[activeToken].glowColor}`,
+                        }}
+                      />
 
-                        <div className="mt-1 text-center">
-                          {/* <h3 className="text-md font-bold text-white">
-                            {gameCharacters[activeCharacter].name}
-                          </h3> */}
-                          {/* <div className="mt-2 flex justify-between text-xs text-gray-300">
-                            <span>LEVEL 50</span>
-                            <span>POWER 9800</span>
-                            <span>RARE</span>
-                          </div> */}
-                        </div>
-
-                        {/* <div className="mt-4">
-                          <div className="mb-1 flex justify-between text-xs">
-                            <span className="text-blue-400">progress</span>
-                            <span className="text-blue-400">80/100</span>
-                          </div>
-                          <div className="h-2 w-full overflow-hidden rounded-full bg-gray-700">
-                            <motion.div
-                              className="h-full bg-gradient-to-r from-blue-400 to-blue-600"
-                              initial={{ width: "0%" }}
-                              animate={{ width: "80%" }}
-                              transition={{ duration: 1, delay: 0.5 }}
-                            />
-                          </div>
-                        </div> */}
-
-                        <div className="mt-3 sm:mt-4 md:mt-5">
-                          <div className="mb-1 flex justify-between text-[10px] sm:text-xs">
-                            <span className="font-semibold text-purple-400 drop-shadow-[0_0_10px_rgba(168,85,247,0.8)]">
-                              ACHIEVEMENTS
-                            </span>
-                            <span className="font-semibold text-fuchsia-400 drop-shadow-[0_0_10px_rgba(217,70,239,0.8)]">
-                              {gameCharacters[activeCharacter].progress}/100
-                            </span>
-                          </div>
-                          <div className="mb-2 mt-1 h-2 w-full overflow-hidden rounded-full border border-purple-900/50 bg-[#1a0b2e]/90 shadow-inner shadow-purple-950/70">
-                            <motion.div
-                              className="h-full bg-gradient-to-r from-purple-600 via-fuchsia-600 to-purple-700 shadow-[0_0_15px_rgba(168,85,247,0.9)]"
-                              initial={{ width: "0%" }}
-                              animate={{
-                                width: `${gameCharacters[activeCharacter].progress}%`,
-                              }}
-                              transition={{ duration: 1, delay: 0.7 }}
-                            />
-                          </div>
-                        </div>
-
-                        <motion.button
-                          whileHover={{ scale: 1.03 }}
-                          whileTap={{ scale: 0.97 }}
-                          className="mt-3 w-full rounded-lg bg-gradient-to-r from-purple-700 via-fuchsia-700 to-purple-800 py-2 text-xs font-bold text-purple-200 shadow-lg shadow-purple-950/70 transition-all duration-300 hover:from-purple-600 hover:via-fuchsia-600 hover:to-purple-700 hover:shadow-purple-900/80 sm:mt-4 sm:text-sm"
+                      {/* Main token container */}
+                      <motion.div
+                        animate={{
+                          rotateY: [0, 15, -15, 0],
+                          rotateX: [0, -10, 10, 0],
+                        }}
+                        transition={{
+                          duration: 6,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        }}
+                        className="absolute inset-8 flex items-center justify-center"
+                      >
+                        <div
+                          className={`border-1 relative h-full w-full rounded-3xl border-purple-800/60 bg-gradient-to-br ${cryptoTokens[activeToken].color} p-1 shadow-2xl`}
+                          style={{
+                            boxShadow: `0 0 60px ${cryptoTokens[activeToken].glowColor}, inset 0 0 40px rgba(0,0,0,0.5)`,
+                          }}
                         >
-                          {gameCharacters[activeCharacter].name} NOW
-                        </motion.button>
-                      </div>
+                          {/* Inner card with glassmorphism */}
+                          <div className="h-full w-full rounded-2xl border border-purple-700/40 bg-[#0a0015]/90 p-6 backdrop-blur-2xl sm:p-7 md:p-8 lg:p-7">
+                            {/* Character Image */}
+                            <div className="mb-4 flex justify-center">
+                              <motion.div
+                                animate={{ scale: [1, 1.05, 1] }}
+                                transition={{
+                                  duration: 2,
+                                  repeat: Infinity,
+                                  ease: "easeInOut",
+                                }}
+                                className="relative h-32 w-32 overflow-hidden rounded-2xl border-2 border-purple-600/50 bg-gradient-to-br from-purple-900/80 to-fuchsia-900/80 shadow-[0_0_30px_rgba(168,85,247,0.6)] sm:h-36 sm:w-36 md:h-44 md:w-44 lg:h-40 lg:w-40"
+                              >
+                                <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#0a0015]/80 via-transparent to-transparent" />
+                                <Image
+                                  src={cryptoTokens[activeToken].image}
+                                  alt={cryptoTokens[activeToken].motto}
+                                  fill
+                                  className="object-cover"
+                                  priority
+                                />
+                              </motion.div>
+                            </div>
+
+                            {/* Token motto - PLAY/EARN/DONATE */}
+                            <div className="mb-3 text-center">
+                              <div className="mb-1 bg-gradient-to-r from-purple-300 via-fuchsia-300 to-purple-300 bg-clip-text text-4xl font-black text-transparent drop-shadow-[0_0_20px_rgba(168,85,247,0.9)] sm:text-5xl md:text-6xl lg:text-5xl">
+                                {cryptoTokens[activeToken].motto}
+                              </div>
+                            </div>
+
+                            {/* Token name */}
+                            {/* <div className="mb-2 text-center">
+                              <h3 className="mb-1 bg-gradient-to-r from-purple-400 via-fuchsia-400 to-purple-400 bg-clip-text text-lg font-bold text-transparent drop-shadow-[0_0_12px_rgba(168,85,247,0.8)] sm:text-xl md:text-2xl lg:text-xl">
+                                {cryptoTokens[activeToken].name}
+                              </h3>
+                            </div> */}
+
+                            {/* Blockchain-style connection lines */}
+                            <div className="mb-4 flex items-center justify-between px-2">
+                              <div className="h-px w-full bg-gradient-to-r from-transparent via-purple-600 to-transparent shadow-[0_0_8px_rgba(168,85,247,0.6)]" />
+                              <motion.div
+                                animate={{ scale: [1, 1.3, 1] }}
+                                transition={{ duration: 2, repeat: Infinity }}
+                                className="mx-2 h-2 w-2 rounded-full bg-fuchsia-500 shadow-[0_0_15px_rgba(217,70,239,0.9)]"
+                              />
+                              <div className="h-px w-full bg-gradient-to-r from-transparent via-fuchsia-600 to-transparent shadow-[0_0_8px_rgba(217,70,239,0.6)]" />
+                            </div>
+
+                            {/* Token action button */}
+                            <motion.button
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                              className="mt-5 w-full rounded-xl border border-purple-700/50 bg-gradient-to-r from-purple-800 via-fuchsia-800 to-purple-900 py-3 text-sm font-bold text-purple-100 shadow-lg shadow-purple-950/70 transition-all duration-300 hover:from-purple-700 hover:via-fuchsia-700 hover:to-purple-800 hover:shadow-purple-900/90 sm:text-base md:py-4 md:text-lg lg:py-3 lg:text-base"
+                              style={{
+                                boxShadow: `0 0 20px ${cryptoTokens[activeToken].glowColor}`,
+                              }}
+                            >
+                              {cryptoTokens[activeToken].motto} NOW
+                            </motion.button>
+                          </div>
+                        </div>
+                      </motion.div>
+
+                      {/* Floating particles around token */}
+                      {[...Array(8)].map((_, i) => (
+                        <motion.div
+                          key={i}
+                          animate={{
+                            y: [0, -20, 0],
+                            x: [0, Math.sin((i * 45 * Math.PI) / 180) * 10, 0],
+                            opacity: [0.3, 0.8, 0.3],
+                          }}
+                          transition={{
+                            duration: 3 + i * 0.2,
+                            repeat: Infinity,
+                            delay: i * 0.2,
+                          }}
+                          className="absolute h-2 w-2 rounded-full bg-gradient-to-br from-purple-500 to-fuchsia-500 shadow-[0_0_10px_rgba(168,85,247,0.8)]"
+                          style={{
+                            top: `${50 + 40 * Math.sin((i * 45 * Math.PI) / 180)}%`,
+                            left: `${50 + 40 * Math.cos((i * 45 * Math.PI) / 180)}%`,
+                          }}
+                        />
+                      ))}
                     </div>
                   </div>
                 </motion.div>
               </AnimatePresence>
 
-              {/* Character selection dots */}
-              <div className="absolute -bottom-2 left-1/2 flex -translate-x-1/2 space-x-2 sm:bottom-0">
-                {gameCharacters.map((_, index) => (
+              {/* Token selection dots */}
+              {/* <div className="absolute -bottom-2 left-1/2 flex -translate-x-1/2 space-x-3 sm:bottom-0">
+                {cryptoTokens.map((token, index) => (
                   <button
-                    key={index}
-                    onClick={() => setActiveCharacter(index)}
-                    className={`h-3 w-3 rounded-full transition-all duration-300 ${
-                      activeCharacter === index
-                        ? "scale-125 bg-gradient-to-r from-purple-500 to-fuchsia-500 shadow-[0_0_12px_rgba(168,85,247,0.9)]"
-                        : "bg-purple-900/70 shadow-[0_0_5px_rgba(168,85,247,0.4)] hover:bg-purple-700/80"
-                    }`}
+                    key={token.id}
+                    onClick={() => setActiveToken(index)}
+                    className={`h-3 w-3 rounded-full transition-all duration-300 ${activeToken === index ? "scale-125 bg-gradient-to-r from-purple-500 to-fuchsia-500 shadow-[0_0_12px_rgba(168,85,247,0.9)]" : "bg-purple-900/70 shadow-[0_0_5px_rgba(168,85,247,0.4)] hover:bg-purple-700/80"}`}
                   />
                 ))}
-              </div>
+              </div> */}
             </div>
 
             {/* Floating game elements */}

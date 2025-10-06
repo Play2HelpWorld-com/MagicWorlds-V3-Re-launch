@@ -47,7 +47,7 @@ export default function RootLayout({
           >
             <WagmiProviderComponent>
               <ReduxInitializer>
-                <Lines />
+                {/* <Lines /> */}
                 <Header />
                 <ToasterContext />
                 <Toaster
