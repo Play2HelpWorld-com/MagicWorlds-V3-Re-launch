@@ -299,49 +299,8 @@ const Feature = () => {
       <section
         id="features"
         ref={sectionRef}
-        className="relative overflow-hidden bg-gradient-to-b from-gray-900 to-black py-20 dark:from-gray-900 dark:to-black lg:py-28 xl:py-32"
+        className="relative overflow-hidden bg-transparent lg:py-28 xl:py-32"
       >
-        {/* Advanced Canvas Background */}
-        <canvas
-          ref={canvasRef}
-          className="pointer-events-none absolute inset-0 h-full w-full"
-          style={{ opacity: 0.8 }}
-        />
-
-        {/* Radial Gradient Overlay */}
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={radialGradientStyle}
-        />
-
-        {/* Diagonal Light Streaks */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute h-px opacity-20"
-              style={{
-                background:
-                  "linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.8) 50%, transparent 100%)",
-                width: "200%",
-                height: "1px",
-                left: "-50%",
-                top: `${i * 20 + 10}%`,
-                transform: `rotate(${35 - i * 5}deg)`,
-              }}
-              animate={{
-                x: ["-100%", "100%"],
-              }}
-              transition={{
-                duration: 8 + i * 2,
-                repeat: Infinity,
-                ease: "linear",
-                delay: i * 2,
-              }}
-            />
-          ))}
-        </div>
-
         <div className="relative mx-auto max-w-c-1315 px-4 md:px-8 xl:px-0">
           {/* Section Title with Animation */}
           <motion.div
@@ -400,9 +359,15 @@ const Feature = () => {
 };
 
 const GameFeatureCard = ({ feature, index, inView }) => {
-  const { icon, title, description, color = "purple" } = feature;
+  const { icon, title, description, color = "purple", link } = feature;
   const [isHovered, setIsHovered] = useState(false);
   const controls = useAnimation();
+
+  const handleClick = () => {
+    if (link) {
+      window.open(link, "_blank", "noopener,noreferrer");
+    }
+  };
 
   useEffect(() => {
     if (isHovered) {
@@ -471,17 +436,47 @@ const GameFeatureCard = ({ feature, index, inView }) => {
     },
   };
 
-  // Color map for different card themes
+  // Color map for different card themes - simplified
   const colorMap = {
-    purple: "from-purple-500 to-indigo-600",
-    blue: "from-blue-500 to-cyan-600",
-    green: "from-green-500 to-emerald-600",
-    red: "from-red-500 to-rose-600",
-    orange: "from-orange-500 to-amber-600",
-    pink: "from-pink-500 to-rose-600",
+    purple: {
+      gradient: "from-purple-600 to-indigo-600",
+      glow: "rgba(147, 51, 234, 0.3)",
+      border: "border-purple-500/20",
+      bgOverlay: "from-purple-900/10 to-transparent",
+    },
+    blue: {
+      gradient: "from-blue-600 to-cyan-600",
+      glow: "rgba(59, 130, 246, 0.3)",
+      border: "border-blue-500/20",
+      bgOverlay: "from-blue-900/10 to-transparent",
+    },
+    green: {
+      gradient: "from-green-600 to-emerald-600",
+      glow: "rgba(34, 197, 94, 0.3)",
+      border: "border-green-500/20",
+      bgOverlay: "from-green-900/10 to-transparent",
+    },
+    red: {
+      gradient: "from-red-600 to-rose-600",
+      glow: "rgba(239, 68, 68, 0.3)",
+      border: "border-red-500/20",
+      bgOverlay: "from-red-900/10 to-transparent",
+    },
+    orange: {
+      gradient: "from-orange-600 to-amber-600",
+      glow: "rgba(249, 115, 22, 0.3)",
+      border: "border-orange-500/20",
+      bgOverlay: "from-orange-900/10 to-transparent",
+    },
+    pink: {
+      gradient: "from-pink-600 to-fuchsia-600",
+      glow: "rgba(236, 72, 153, 0.3)",
+      border: "border-pink-500/20",
+      bgOverlay: "from-pink-900/10 to-transparent",
+    },
   };
 
-  const bgGradient = colorMap[color] || colorMap.purple;
+  const colorTheme = colorMap[color] || colorMap.purple;
 
   return (
     <motion.div
@@ -492,103 +487,127 @@ const GameFeatureCard = ({ feature, index, inView }) => {
       whileHover="hover"
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      className="relative z-10 overflow-hidden rounded-xl border border-gray-700 bg-black bg-opacity-40 backdrop-blur-sm dark:border-gray-700 "
+      onClick={handleClick}
+      className={`group relative z-10 cursor-pointer overflow-hidden rounded-2xl border-2 ${colorTheme.border} bg-gradient-to-br from-black/60 to-gray-900/40 backdrop-blur-md transition-all duration-500 hover:border-opacity-100`}
+      style={{
+        boxShadow: isHovered
+          ? `0 20px 40px -15px ${colorTheme.glow}, 0 0 40px -10px ${colorTheme.glow}`
+          : "0 8px 16px -4px rgba(0, 0, 0, 0.3)",
+      }}
     >
-      {/* Glass morphism effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-700/20 to-transparent opacity-5" />
-
-      {/* Animated border effect */}
+      {/* Animated background gradient overlay */}
       <motion.div
-        variants={{
-          animate: {
-            opacity: [0.5, 1, 0.5],
-            transition: {
-              duration: 2,
-              repeat: Infinity,
-              repeatType: "reverse",
-            },
-          },
+        className={`absolute inset-0 bg-gradient-to-br ${colorTheme.bgOverlay} opacity-0`}
+        animate={{
+          opacity: isHovered ? 0.4 : 0,
         }}
-        animate="animate"
-        className="pointer-events-none absolute inset-0 rounded-xl"
-        style={{
-          padding: "1px",
-          background: `linear-gradient(90deg, transparent 0%, rgba(14, 58, 217, 0.1) 50%, transparent 100%)`,
-          maskImage:
-            "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-          maskComposite: "exclude",
-        }}
+        transition={{ duration: 0.5 }}
       />
 
-      <div className="p-8 md:p-10">
-        {/* Animated icon */}
-        <motion.div
-          variants={iconVariants}
-          className={`relative flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br ${bgGradient}`}
-        >
-          <Image
-            src={icon}
-            width={60}
-            height={60}
-            alt={title}
-            className="relative z-10"
-          />
+      {/* Subtle glow effect on hover */}
+      <motion.div
+        className="pointer-events-none absolute -right-16 -top-16 h-32 w-32 rounded-full blur-3xl"
+        style={{
+          background: `radial-gradient(circle, ${colorTheme.glow} 0%, transparent 70%)`,
+        }}
+        animate={
+          isHovered ? { scale: 1.2, opacity: 0.6 } : { scale: 0, opacity: 0 }
+        }
+        transition={{ duration: 0.5 }}
+      />
 
-          {/* Icon glow effect */}
-          <div className="absolute inset-0 rounded-2xl bg-white opacity-30 blur-xl" />
-        </motion.div>
+      {/* Card Content - New Layout */}
+      <div className="relative flex h-full flex-col">
+        {/* Header Section with Icon and Title side by side */}
+        <div className="flex items-start gap-4 border-b border-white/10 p-6 md:p-8">
+          {/* Enhanced icon with subtle glow */}
+          <motion.div
+            variants={iconVariants}
+            className={`relative flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${colorTheme.gradient} shadow-xl`}
+            style={{
+              boxShadow: isHovered
+                ? `0 12px 24px ${colorTheme.glow}, 0 0 30px ${colorTheme.glow}`
+                : `0 6px 12px ${colorTheme.glow}`,
+            }}
+          >
+            <Image
+              src={icon}
+              width={40}
+              height={40}
+              alt={title}
+              className="relative z-10 drop-shadow-lg"
+            />
 
-        {/* Title with hover effect */}
-        <motion.h3
-          className="mb-4 mt-8 text-2xl font-bold text-white"
-          animate={isHovered ? { x: 5 } : { x: 0 }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        >
-          {title}
-        </motion.h3>
+            {/* Subtle pulsing inner glow */}
+            <motion.div
+              className="absolute inset-2 rounded-lg bg-white"
+              animate={{
+                opacity: isHovered ? [0.1, 0.25, 0.1] : 0.1,
+              }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
+          </motion.div>
 
-        {/* Description */}
-        <p className="text-gray-300">{description}</p>
+          {/* Title aligned with icon */}
+          <div className="flex-1 pt-1">
+            <motion.h3
+              className={`bg-gradient-to-r ${colorTheme.gradient} bg-clip-text text-xl font-bold uppercase tracking-wide text-transparent md:text-2xl`}
+              animate={isHovered ? { x: 2 } : { x: 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            >
+              {title}
+            </motion.h3>
+            {/* Decorative line under title */}
+            <motion.div
+              className={`mt-2 h-1 rounded-full bg-gradient-to-r ${colorTheme.gradient}`}
+              initial={{ width: 0 }}
+              animate={{ width: isHovered ? "60%" : "30%" }}
+              transition={{ duration: 0.4 }}
+            />
+          </div>
+        </div>
 
-        {/* Animated action button */}
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className={`mt-6 rounded-lg bg-gradient-to-r px-5 py-2 ${bgGradient} text-sm font-medium text-white opacity-0`}
-          animate={isHovered ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-          transition={{ duration: 0.2 }}
-        >
-          Explore More
-        </motion.button>
+        {/* Body Section - Description */}
+        <div className="flex-1 p-6 md:p-8">
+          <p className="text-base leading-relaxed text-gray-300">
+            {description}
+          </p>
+        </div>
+
+        {/* Footer Section - CTA Button */}
+        <div className="border-t border-white/10 p-6 md:p-8">
+          <motion.div
+            className={`group/btn relative overflow-hidden rounded-lg bg-gradient-to-r ${colorTheme.gradient} px-6 py-3 text-center text-sm font-semibold text-white shadow-lg`}
+            animate={isHovered ? { opacity: 1 } : { opacity: 0.9 }}
+            transition={{ duration: 0.3 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            style={{
+              boxShadow: isHovered
+                ? `0 8px 20px ${colorTheme.glow}`
+                : "0 4px 8px rgba(0, 0, 0, 0.2)",
+            }}
+          >
+            {/* Sliding shine effect */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+              initial={{ x: "-100%" }}
+              animate={isHovered ? { x: "200%" } : { x: "-100%" }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+            />
+
+            <span className="relative flex items-center justify-center gap-2">
+              <span>Visit Platform</span>
+              <motion.span
+                animate={isHovered ? { x: [0, 4, 0] } : { x: 0 }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
+                →
+              </motion.span>
+            </span>
+          </motion.div>
+        </div>
       </div>
-
-      {/* Interactive particles on hover */}
-      <AnimatePresence>
-        {isHovered && (
-          <>
-            {Array.from({ length: 8 }).map((_, i) => (
-              <motion.div
-                key={i}
-                initial={{
-                  opacity: 0,
-                  scale: 0,
-                  x: "50%",
-                  y: "50%",
-                }}
-                animate={{
-                  opacity: [0, 0.5, 0],
-                  scale: [0, 1],
-                  x: `${50 + (Math.random() * 100 - 50)}%`,
-                  y: `${50 + (Math.random() * 100 - 50)}%`,
-                }}
-                exit={{ opacity: 0, scale: 0 }}
-                transition={{ duration: 1 + Math.random() }}
-                className={`absolute h-2 w-2 rounded-full bg-${color}-400`}
-              />
-            ))}
-          </>
-        )}
-      </AnimatePresence>
     </motion.div>
   );
 };

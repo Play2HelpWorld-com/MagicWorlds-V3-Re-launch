@@ -4,44 +4,56 @@ const featuresData: Feature[] = [
   {
     id: 1,
     icon: "/images/icon/join.png",
-    title: "Join Now",
+    title: "Join the Community",
     description:
-      "Join Magic Worlds and enjoy immersive games for free while being part of something meaningful.",
+      "Connect with thousands of players worldwide. Join our vibrant community on Discord, share strategies, and make lasting friendships in the Magic Worlds universe.",
+    link: "https://discord.com/invite/NcNSaTVNdn",
+    color: "purple",
   },
   {
     id: 2,
     icon: "/images/icon/watch.png",
-    title: "Watch Ads",
+    title: "Watch & Learn",
     description:
-      "Watch ads and earn boosters. Use boosters to play games and earn more rewards.",
+      "Discover gameplay tutorials, epic moments, and behind-the-scenes content on our YouTube channel. Level up your skills with expert tips and entertaining videos.",
+    link: "https://youtube.com/@magicworldstv?si=FHtkbuWJh5aYKmQy",
+    color: "red",
   },
   {
     id: 3,
     icon: "/images/icon/play.png",
-    title: "Play Games",
+    title: "Play & Earn",
     description:
-      "Step into the Worlds to play, have fun, and explore endless possibilities. ",
+      "Dive into immersive gameplay where your skills translate to real rewards. Complete quests, win tournaments, and earn tokens that unlock exclusive benefits and prizes.",
+    link: "https://github.com/orgs/TheMagicWorlds",
+    color: "blue",
   },
   {
     id: 4,
     icon: "/images/icon/survey.png",
-    title: "Complete Surveys",
+    title: "Share Your Journey",
     description:
-      "Complete surveys and earn rewards. Use rewards to donate to charity and help people in need.",
+      "Follow us on Twitter/X for latest updates, exclusive announcements, and community events. Join the conversation and share your gaming achievements with the world.",
+    link: "https://x.com/magicworlds3",
+    color: "blue",
   },
   {
     id: 5,
     icon: "/images/icon/collect.png",
-    title: "Collect Points",
+    title: "Collect & Trade",
     description:
-      "Collect points and earn rewards. Use rewards to donate to charity and help people in need.",
+      "Build your unique collection of NFTs, rare items, and digital assets. Trade with other players and showcase your achievements in the Magic Worlds marketplace.",
+    link: "https://www.facebook.com/MagikWorlds",
+    color: "green",
   },
   {
     id: 6,
     icon: "/images/icon/refer.png",
-    title: "Refer Friends",
+    title: "Refer & Prosper",
     description:
-      "Refer friends and earn rewards. Use rewards to donate to charity and help people in need.",
+      "Invite friends and earn generous rewards through our referral program. Follow us on Instagram and LinkedIn to stay connected and unlock bonus opportunities.",
+    link: "https://www.linkedin.com/company/magic-worlds",
+    color: "pink",
   },
 ];
 
