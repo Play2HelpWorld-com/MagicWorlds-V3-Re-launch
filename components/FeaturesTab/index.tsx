@@ -413,34 +413,41 @@ const FeaturesTab = () => {
                             <div className="absolute -right-10 -top-10 h-20 w-20 rounded-full bg-purple-500/20 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100" />
 
                             <div className="relative flex items-start gap-3">
-                              <div className="mt-0.5 flex-shrink-0">
+                              {/* Animated glow dot */}
+                              <motion.div
+                                animate={{
+                                  scale: [1, 1.2, 1],
+                                  opacity: [0.6, 1, 0.6],
+                                }}
+                                transition={{
+                                  duration: 2,
+                                  repeat: Infinity,
+                                  ease: "easeInOut",
+                                  delay: i * 0.2,
+                                }}
+                                className="relative mt-2 flex-shrink-0"
+                              >
                                 <div
-                                  className={`flex h-6 w-6 items-center justify-center rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-110
-                                ${
-                                  feature.id === "tabOne"
-                                    ? "bg-blue-500 shadow-blue-500/50"
-                                    : feature.id === "tabTwo"
-                                      ? "bg-amber-500 shadow-amber-500/50"
-                                      : "bg-emerald-500 shadow-emerald-500/50"
-                                }`}
-                                >
-                                  <svg
-                                    width="14"
-                                    height="14"
-                                    viewBox="0 0 12 12"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <path
-                                      d="M10 3L4.5 8.5L2 6"
-                                      stroke="white"
-                                      strokeWidth="2"
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                    />
-                                  </svg>
-                                </div>
-                              </div>
+                                  className={`h-2 w-2 rounded-full ${
+                                    feature.id === "tabOne"
+                                      ? "bg-blue-400"
+                                      : feature.id === "tabTwo"
+                                        ? "bg-amber-400"
+                                        : "bg-emerald-400"
+                                  }`}
+                                />
+                                {/* Outer glow ring */}
+                                <div
+                                  className={`absolute inset-0 -m-1 rounded-full opacity-50 blur-sm ${
+                                    feature.id === "tabOne"
+                                      ? "bg-blue-400"
+                                      : feature.id === "tabTwo"
+                                        ? "bg-amber-400"
+                                        : "bg-emerald-400"
+                                  }`}
+                                />
+                              </motion.div>
+
                               <span className="font-rajdhani text-[15px] font-medium leading-relaxed text-gray-200 md:text-base">
                                 {benefit}
                               </span>
