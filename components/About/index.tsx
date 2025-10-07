@@ -369,24 +369,60 @@ const About = () => {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-transparent py-16 md:py-20">
-        {/* Animated Background Grid with Faded Edges */}
+      <section className="relative overflow-hidden bg-transparent py-20 md:py-28">
+        {/* Enhanced Animated Background */}
         <div className="absolute inset-0 z-0">
-          {/* <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage:
-                "linear-gradient(transparent 0%, transparent calc(100% - 1px), rgba(128, 90, 213, 0.1) calc(100% - 1px)),linear-gradient(to right, transparent 0%, transparent calc(100% - 1px), rgba(128, 90, 213, 0.1) calc(100% - 1px))",
-              backgroundSize: "30px 30px",
+          {/* Animated gradient orbs */}
+          <motion.div
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3],
             }}
-          ></div> */}
-          {/* Fade overlays for all edges */}
-          {/* <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black"></div> */}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-blue-500/20 blur-3xl"
+          />
+          <motion.div
+            animate={{
+              scale: [1.2, 1, 1.2],
+              opacity: [0.2, 0.4, 0.2],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-purple-500/20 blur-3xl"
+          />
+
+          {/* Floating particles */}
+          {Array.from({ length: 20 }).map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute h-1 w-1 rounded-full bg-blue-400/60"
+              animate={{
+                y: [0, -100, 0],
+                x: [0, Math.random() * 100 - 50, 0],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: 5 + Math.random() * 5,
+                repeat: Infinity,
+                delay: Math.random() * 5,
+              }}
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+            />
+          ))}
         </div>
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col-reverse items-center gap-12 lg:flex-row">
+          <div className="flex flex-col-reverse items-center gap-12 lg:flex-row lg:gap-16 xl:gap-20">
             {/* Left Section (Text & Content) */}
             <motion.div
               variants={staggerChildren}
@@ -399,11 +435,11 @@ const About = () => {
                 <motion.div
                   variants={glowVariant}
                   animate="glow"
-                  className="mb-4 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-gradient-to-r from-blue-500/10 via-cyan-500/10 to-blue-500/10 px-4 py-2 text-sm backdrop-blur-sm sm:text-base"
+                  className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-blue-500/30 bg-gradient-to-r from-blue-500/10 via-cyan-500/10 to-blue-500/10 px-5 py-2.5 backdrop-blur-md"
                 >
                   <motion.div
                     animate={{
-                      scale: [1, 1.2, 1],
+                      scale: [1, 1.3, 1],
                       opacity: [0.6, 1, 0.6],
                     }}
                     transition={{
@@ -411,19 +447,29 @@ const About = () => {
                       repeat: Infinity,
                       ease: "easeInOut",
                     }}
-                    className="h-2 w-2 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]"
+                    className="h-2.5 w-2.5 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.8)]"
                   />
-                  <span className="font-rajdhani font-bold uppercase tracking-widest text-white">
+                  <span className="font-rajdhani text-sm font-bold uppercase tracking-widest text-white sm:text-base">
                     Community Impact
                   </span>
                 </motion.div>
-                <h2 className="mb-4 font-orbitron text-2xl font-black uppercase tracking-tight text-white sm:text-3xl lg:text-4xl">
+
+                <h2 className="mb-5 font-orbitron text-2xl font-black uppercase leading-tight tracking-tight text-white sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl">
                   Gaming{" "}
-                  <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(59,130,246,0.3)]">
                     For Good
                   </span>
                 </h2>
-                <p className="mb-6 font-rajdhani text-sm font-medium leading-relaxed text-gray-300 sm:text-base md:text-lg">
+
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                  viewport={{ once: true }}
+                  className="mx-auto mb-6 h-1 w-20 rounded-full bg-gradient-to-r from-transparent via-blue-500 to-transparent lg:mx-0"
+                />
+
+                <p className="mb-8 font-rajdhani text-base font-medium leading-relaxed text-gray-300 sm:text-lg md:text-xl">
                   Every adventure you embark on contributes to something
                   greater. Our platform donates a portion of all earnings to
                   global charities, turning your gaming passion into positive
@@ -431,117 +477,241 @@ const About = () => {
                 </p>
               </motion.div>
 
-              <motion.div variants={fadeInUp} className="mt-6">
-                <div className="mb-6 flex flex-wrap justify-center gap-3 sm:gap-4 lg:justify-start">
-                  {["Environmental", "Education", "Healthcare", "Wildlife"].map(
-                    (cause, index) => (
-                      <motion.span
-                        key={index}
-                        whileHover={{ scale: 1.05 }}
-                        className="rounded-full border border-blue-500/30 bg-blue-900 bg-opacity-20 px-3 py-2 font-rajdhani text-xs font-bold uppercase tracking-wider text-blue-300 sm:px-4 sm:text-sm"
-                      >
-                        {cause}
-                      </motion.span>
-                    ),
-                  )}
+              <motion.div variants={fadeInUp} className="space-y-6">
+                {/* Charity Categories with enhanced styling */}
+                <div className="flex flex-wrap justify-center gap-3 lg:justify-start">
+                  {[
+                    {
+                      name: "Environmental",
+                      color: "from-emerald-500 to-green-500",
+                    },
+                    { name: "Education", color: "from-blue-500 to-cyan-500" },
+                    { name: "Healthcare", color: "from-rose-500 to-pink-500" },
+                  ].map((cause, index) => (
+                    <motion.div
+                      key={index}
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      whileTap={{ scale: 0.98 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                      className="group relative overflow-hidden rounded-full"
+                    >
+                      {/* Animated gradient border */}
+                      <div
+                        className={`absolute inset-0 rounded-full bg-gradient-to-r ${cause.color} opacity-60 blur-sm transition-all duration-300 group-hover:opacity-100 group-hover:blur-md`}
+                      />
+
+                      {/* Inner content */}
+                      <div className="relative rounded-full border border-white/10 bg-gradient-to-br from-gray-900/95 to-gray-900/80 px-5 py-3 backdrop-blur-xl sm:px-6 sm:py-3.5">
+                        {/* Shimmer effect */}
+                        <motion.div
+                          className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                          animate={{
+                            x: ["-100%", "100%"],
+                          }}
+                          transition={{
+                            duration: 1.5,
+                            repeat: Infinity,
+                            ease: "linear",
+                          }}
+                        />
+
+                        <span
+                          className={`relative bg-gradient-to-r ${cause.color} bg-clip-text font-rajdhani text-sm font-bold uppercase tracking-wider text-transparent sm:text-base`}
+                        >
+                          {cause.name}
+                        </span>
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
-                <motion.div whileHover={{ scale: 1.02 }} className="group">
+
+                {/* CTA Button with enhanced effects */}
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group"
+                >
                   <a
                     href="/docs"
-                    className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-5 py-2 font-rajdhani text-sm font-bold uppercase tracking-wider text-white transition-all sm:px-6 sm:py-3 sm:text-base"
+                    className="relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600 px-6 py-3.5 font-rajdhani text-base font-bold uppercase tracking-wider text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 sm:px-8 sm:py-4 sm:text-lg"
                   >
-                    <span className="transition-all duration-300 group-hover:mr-2">
-                      Learn About Our Impact
-                    </span>
-                    <svg
-                      width="16"
-                      height="16"
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                    <motion.div
+                      className="absolute -inset-1 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 opacity-0 blur transition-opacity duration-300 group-hover:opacity-70"
+                      animate={{
+                        scale: [1, 1.1, 1],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                      }}
+                    />
+                    <span className="relative">Learn About Our Impact</span>
+                    <motion.svg
+                      width="20"
+                      height="20"
                       viewBox="0 0 16 16"
                       fill="currentColor"
+                      className="relative"
+                      animate={{ x: [0, 4, 0] }}
+                      transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
                     >
                       <path d="M10.4767 7.16701L6.00668 2.69701L7.18501 1.51868L13.6667 8.00034L7.18501 14.482L6.00668 13.3037L10.4767 8.83368H0.333344V7.16701H10.4767Z" />
-                    </svg>
+                    </motion.svg>
                   </a>
                 </motion.div>
               </motion.div>
             </motion.div>
 
-            {/* Right Section (Image & Card) */}
+            {/* Right Section (Enhanced Image & Card) */}
             <motion.div
               variants={{
-                hidden: { opacity: 0, x: 20, rotateY: 30 },
+                hidden: { opacity: 0, x: 50, rotateY: 15 },
                 visible: { opacity: 1, x: 0, rotateY: 0 },
               }}
               initial="hidden"
               whileInView="visible"
-              transition={{ duration: 1.2, type: "spring" }}
+              transition={{ duration: 1, type: "spring", bounce: 0.3 }}
               viewport={{ once: true }}
               className="w-full lg:w-1/2"
             >
-              <div className="relative mx-auto w-full max-w-md sm:max-w-lg lg:max-w-full">
-                {/* 3D Card Effect */}
-                <div className="relative overflow-hidden rounded-lg bg-gray-900/50 p-1">
-                  <div className="absolute -inset-1 animate-pulse rounded-xl bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 opacity-70 blur"></div>
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
-                    <Image
-                      src="/images/about/charity4.png"
-                      alt="Our Impact"
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
-                    <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
+              <div className="group relative mx-auto w-full max-w-md sm:max-w-lg lg:max-w-full">
+                {/* Enhanced 3D Card Effect */}
+                <div className="relative">
+                  {/* Outer glow effect */}
+                  <motion.div
+                    className="absolute -inset-2 rounded-2xl bg-gradient-to-r from-blue-600 via-cyan-600 to-purple-600 opacity-60 blur-xl transition-all duration-500 group-hover:opacity-80 group-hover:blur-2xl"
+                    animate={{
+                      opacity: [0.5, 0.7, 0.5],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+
+                  {/* Main card container */}
+                  <div className="relative overflow-hidden rounded-2xl border border-blue-500/30 bg-gradient-to-br from-gray-900 via-gray-900/95 to-blue-900/20 p-1.5 backdrop-blur-xl">
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
+                      <Image
+                        src="/images/about/charity4.png"
+                        alt="Our Impact"
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+
+                      {/* Enhanced gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-90" />
+
+                      {/* Animated shimmer effect */}
                       <motion.div
-                        variants={staggerChildren}
-                        className="mb-3 flex items-center gap-3 sm:mb-4 sm:gap-4"
-                      >
-                        {[1, 2, 3].map((_, i) => (
-                          <motion.div
-                            key={i}
-                            variants={fadeInUp}
-                            className="flex h-10 w-10 items-center justify-center rounded-full bg-white bg-opacity-20 backdrop-blur-sm sm:h-12 sm:w-12"
-                          >
-                            <Image
-                              src={`/images/about/user-${i + 1}.png`}
-                              alt={`Charity ${i + 1}`}
-                              width={24}
-                              height={24}
-                              className="rounded-full"
-                            />
-                          </motion.div>
-                        ))}
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
+                        animate={{
+                          x: ["-100%", "200%"],
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          ease: "linear",
+                        }}
+                      />
+
+                      {/* Enhanced bottom content */}
+                      <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-7">
                         <motion.div
-                          variants={fadeInUp}
-                          className="text-sm font-medium text-white sm:text-base"
-                        >
-                          +24 more charities
-                        </motion.div>
-                      </motion.div>
-                      <motion.h3
-                        variants={fadeInUp}
-                        className="mb-1 text-xl font-bold text-white sm:mb-2 sm:text-2xl"
-                      >
-                        $2.4M Donated
-                      </motion.h3>
-                      <motion.div
-                        variants={fadeInUp}
-                        className="h-2 w-full rounded-full bg-gray-700"
-                      >
-                        <motion.div
-                          className="h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"
-                          style={{ width: "70%" }}
-                          initial={{ width: "0%" }}
-                          whileInView={{ width: "70%" }}
-                          transition={{ duration: 1.5, delay: 0.5 }}
+                          variants={staggerChildren}
+                          initial="hidden"
+                          whileInView="visible"
                           viewport={{ once: true }}
-                        />
-                      </motion.div>
-                      <motion.p
-                        variants={fadeInUp}
-                        className="mt-1 text-xs text-blue-300 sm:text-sm"
-                      >
-                        70% to our yearly goal
-                      </motion.p>
+                          className="space-y-4"
+                        >
+                          {/* Charity avatars */}
+                          <motion.div
+                            variants={fadeInUp}
+                            className="flex items-center gap-3"
+                          >
+                            <div className="flex -space-x-3">
+                              {[1, 2, 3].map((_, i) => (
+                                <motion.div
+                                  key={i}
+                                  initial={{ scale: 0, opacity: 0 }}
+                                  whileInView={{ scale: 1, opacity: 1 }}
+                                  transition={{ delay: i * 0.1 }}
+                                  viewport={{ once: true }}
+                                  whileHover={{ scale: 1.1, zIndex: 10 }}
+                                  className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border-2 border-gray-900 bg-gradient-to-br from-blue-500/20 to-purple-500/20 backdrop-blur-sm sm:h-14 sm:w-14"
+                                >
+                                  <Image
+                                    src={`/images/about/user-${i + 1}.png`}
+                                    alt={`Charity ${i + 1}`}
+                                    width={56}
+                                    height={56}
+                                    className="rounded-full object-cover"
+                                  />
+                                </motion.div>
+                              ))}
+                            </div>
+                            <motion.div
+                              variants={fadeInUp}
+                              className="font-rajdhani text-sm font-bold text-blue-300 sm:text-base"
+                            >
+                              +24 more charities
+                            </motion.div>
+                          </motion.div>
+
+                          {/* Donation amount */}
+                          <motion.h3
+                            variants={fadeInUp}
+                            className="font-orbitron text-2xl font-black uppercase text-white sm:text-3xl md:text-4xl"
+                          >
+                            <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                              $2.4M
+                            </span>{" "}
+                            Donated
+                          </motion.h3>
+
+                          {/* Progress bar */}
+                          <motion.div variants={fadeInUp} className="space-y-2">
+                            <div className="relative h-3 overflow-hidden rounded-full bg-gray-800/80 backdrop-blur-sm">
+                              <motion.div
+                                className="absolute inset-0 bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-500"
+                                initial={{ width: "0%" }}
+                                whileInView={{ width: "70%" }}
+                                transition={{
+                                  duration: 2,
+                                  delay: 0.5,
+                                  ease: "easeOut",
+                                }}
+                                viewport={{ once: true }}
+                              >
+                                {/* Shimmer effect on progress */}
+                                <motion.div
+                                  className="h-full w-1/3 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                                  animate={{
+                                    x: ["-100%", "300%"],
+                                  }}
+                                  transition={{
+                                    duration: 2,
+                                    repeat: Infinity,
+                                    ease: "linear",
+                                  }}
+                                />
+                              </motion.div>
+                            </div>
+                            <p className="font-rajdhani text-xs font-bold text-cyan-300 sm:text-sm">
+                              70% to our yearly goal of $3.5M
+                            </p>
+                          </motion.div>
+                        </motion.div>
+                      </div>
                     </div>
                   </div>
                 </div>
