@@ -530,41 +530,116 @@ const About = () => {
 
                 {/* CTA Button with enhanced effects */}
                 <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="group"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="group relative mx-auto w-fit lg:mx-0"
                 >
                   <a
                     href="/docs"
-                    className="relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600 px-6 py-3.5 font-rajdhani text-base font-bold uppercase tracking-wider text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 sm:px-8 sm:py-4 sm:text-lg"
+                    className="relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full border-2 border-cyan-400/30 bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 px-6 py-3.5 font-rajdhani text-base font-bold uppercase tracking-wider text-white shadow-2xl shadow-cyan-500/40 transition-all duration-300 sm:px-8 sm:py-4 sm:text-lg"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                    {/* Animated scan line effect */}
                     <motion.div
-                      className="absolute -inset-1 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 opacity-0 blur transition-opacity duration-300 group-hover:opacity-70"
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
                       animate={{
-                        scale: [1, 1.1, 1],
+                        x: ["-100%", "200%"],
                       }}
                       transition={{
                         duration: 2,
                         repeat: Infinity,
+                        ease: "linear",
                       }}
                     />
-                    <span className="relative">Learn About Our Impact</span>
-                    <motion.svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 16 16"
-                      fill="currentColor"
+
+                    {/* Diagonal grid overlay */}
+                    <div className="absolute inset-0 opacity-10">
+                      <svg width="100%" height="100%">
+                        <pattern
+                          id="grid-pattern"
+                          x="0"
+                          y="0"
+                          width="10"
+                          height="10"
+                          patternUnits="userSpaceOnUse"
+                        >
+                          <path
+                            d="M 10 0 L 0 0 0 10"
+                            fill="none"
+                            stroke="white"
+                            strokeWidth="0.5"
+                          />
+                        </pattern>
+                        <rect
+                          width="100%"
+                          height="100%"
+                          fill="url(#grid-pattern)"
+                        />
+                      </svg>
+                    </div>
+
+                    {/* Left icon with animation */}
+                    <motion.div
                       className="relative"
-                      animate={{ x: [0, 4, 0] }}
+                      animate={{
+                        rotate: [0, 360],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "linear",
+                      }}
+                    >
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        className="relative drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]"
+                      >
+                        <circle
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        />
+                        <path
+                          d="M12 6v6l4 2"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                        />
+                      </svg>
+                    </motion.div>
+
+                    {/* Text with enhanced styling */}
+                    <span className="relative drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+                      Learn About Our Impact
+                    </span>
+
+                    {/* Right arrow with enhanced animation */}
+                    <motion.div
+                      animate={{
+                        x: [0, 6, 0],
+                        opacity: [1, 0.7, 1],
+                      }}
                       transition={{
                         duration: 1.5,
                         repeat: Infinity,
                         ease: "easeInOut",
                       }}
+                      className="relative"
                     >
-                      <path d="M10.4767 7.16701L6.00668 2.69701L7.18501 1.51868L13.6667 8.00034L7.18501 14.482L6.00668 13.3037L10.4767 8.83368H0.333344V7.16701H10.4767Z" />
-                    </motion.svg>
+                      <svg
+                        width="22"
+                        height="22"
+                        viewBox="0 0 16 16"
+                        fill="currentColor"
+                        className="drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]"
+                      >
+                        <path d="M10.4767 7.16701L6.00668 2.69701L7.18501 1.51868L13.6667 8.00034L7.18501 14.482L6.00668 13.3037L10.4767 8.83368H0.333344V7.16701H10.4767Z" />
+                      </svg>
+                    </motion.div>
                   </a>
                 </motion.div>
               </motion.div>
@@ -663,7 +738,7 @@ const About = () => {
                               variants={fadeInUp}
                               className="font-rajdhani text-sm font-bold text-blue-300 sm:text-base"
                             >
-                              +24 more charities
+                              +100 more charities
                             </motion.div>
                           </motion.div>
 
