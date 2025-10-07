@@ -370,16 +370,19 @@ const About = () => {
       </section>
 
       <section className="relative overflow-hidden bg-transparent py-16 md:py-20">
-        {/* Animated Background Grid */}
+        {/* Animated Background Grid with Faded Edges */}
         <div className="absolute inset-0 z-0">
-          <div
+          {/* <div
             className="absolute inset-0"
             style={{
               backgroundImage:
                 "linear-gradient(transparent 0%, transparent calc(100% - 1px), rgba(128, 90, 213, 0.1) calc(100% - 1px)),linear-gradient(to right, transparent 0%, transparent calc(100% - 1px), rgba(128, 90, 213, 0.1) calc(100% - 1px))",
               backgroundSize: "30px 30px",
             }}
-          ></div>
+          ></div> */}
+          {/* Fade overlays for all edges */}
+          {/* <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black"></div> */}
         </div>
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -477,8 +480,8 @@ const About = () => {
             >
               <div className="relative mx-auto w-full max-w-md sm:max-w-lg lg:max-w-full">
                 {/* 3D Card Effect */}
-                <div className="absolute -inset-1 animate-pulse rounded-xl bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 opacity-70 blur"></div>
                 <div className="relative overflow-hidden rounded-lg bg-gray-900/50 p-1">
+                  <div className="absolute -inset-1 animate-pulse rounded-xl bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 opacity-70 blur"></div>
                   <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
                     <Image
                       src="/images/about/charity4.png"
