@@ -797,7 +797,7 @@ const About = () => {
       </section>
 
       {/* <!-- ===== Play to Earn Mechanics Section ===== --> */}
-      <section className="relative overflow-hidden bg-black py-20">
+      <section className="relative overflow-hidden bg-transparent py-20">
         {/* Animated Hexagon Grid Background */}
         <div className="absolute inset-0 z-0 opacity-20">
           <svg width="100%" height="100%">
@@ -873,15 +873,13 @@ const About = () => {
                 title: "Create Your Account",
                 description:
                   "Register and receive your welcome bonus of 500 magic coins to kickstart your journey",
-                icon: "🧙‍♂️",
                 color: "from-blue-600 to-purple-600",
               },
               {
                 number: "02",
-                title: "Play & Complete Quests",
+                title: "Complete Quests",
                 description:
                   "Engage in games, missions, challenges, and tournaments to earn magical rewards",
-                icon: "⚔️",
                 color: "from-purple-600 to-pink-600",
               },
               {
@@ -889,7 +887,6 @@ const About = () => {
                 title: "Redeem Your Treasures",
                 description:
                   "Convert your magical earnings into gift cards, cryptocurrencies, or cash transfers",
-                icon: "💰",
                 color: "from-pink-600 to-orange-600",
               },
             ].map((step, index) => (
@@ -933,15 +930,15 @@ const About = () => {
                     </svg>
                   </div>
 
-                  {/* Icon, title and number in same row */}
+                  {/* Number and title in same row */}
                   <div className="relative mb-6 flex items-center gap-4">
-                    {/* Icon with enhanced styling */}
-                    <div className="relative flex h-16 w-16 flex-shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 to-transparent backdrop-blur-sm">
+                    {/* Step number with enhanced styling */}
+                    <div className="relative flex h-16 w-16 flex-shrink-0 items-center justify-center overflow-hidden rounded-2xl border-2 border-white/20 bg-gradient-to-br from-white/5 to-transparent shadow-lg backdrop-blur-sm">
                       {/* Inner animated gradient */}
                       <motion.div
-                        className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-20`}
+                        className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-30`}
                         animate={{
-                          opacity: [0.2, 0.4, 0.2],
+                          opacity: [0.3, 0.5, 0.3],
                         }}
                         transition={{
                           duration: 3,
@@ -949,29 +946,21 @@ const About = () => {
                           ease: "easeInOut",
                         }}
                       />
-                      <motion.div
-                        variants={floatVariant}
-                        animate="float"
-                        className="relative z-10 text-3xl drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]"
-                      >
-                        {step.icon}
-                      </motion.div>
-                    </div>
-
-                    {/* Title in same row */}
-                    <h3 className="flex-1 font-orbitron text-lg font-black uppercase leading-tight tracking-tight text-white sm:text-xl lg:text-2xl">
-                      {step.title}
-                    </h3>
-
-                    {/* Step number with modern styling */}
-                    <div className="flex flex-col items-end">
                       <div
-                        className={`bg-gradient-to-br ${step.color} bg-clip-text font-orbitron text-4xl font-black leading-none text-transparent opacity-70 sm:text-5xl`}
+                        className={`relative z-10 bg-gradient-to-br ${step.color} bg-clip-text font-orbitron text-3xl font-black leading-none text-transparent`}
+                        style={{
+                          textShadow: "0 0 20px rgba(255,255,255,0.3)",
+                          filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.5))",
+                        }}
                       >
                         {step.number}
                       </div>
-                      <div className="mt-1 h-0.5 w-10 rounded-full bg-gradient-to-r from-transparent to-white/20" />
                     </div>
+
+                    {/* Title */}
+                    <h3 className="flex-1 font-orbitron text-lg font-black uppercase leading-tight tracking-tight text-white sm:text-xl lg:text-2xl">
+                      {step.title}
+                    </h3>
                   </div>
 
                   {/* Content section */}
