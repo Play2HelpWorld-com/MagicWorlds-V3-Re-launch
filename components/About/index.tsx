@@ -82,7 +82,7 @@ const About = () => {
   return (
     <>
       {/* <!-- ===== Hero Gaming Section ===== --> */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-black to-gray-900 pb-20 pt-16 lg:pb-28 lg:pt-24 xl:pb-32">
+      <section className="relative overflow-hidden bg-transparent pb-20 pt-16 lg:pb-28 lg:pt-24 xl:pb-32">
         {/* Animated Background Particles */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           {particles.map((_, index) => (
