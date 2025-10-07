@@ -46,7 +46,7 @@ const About = () => {
 
   const floatVariant = {
     float: {
-      y: [0, -15, 0],
+      y: [0, -3, 0],
       transition: {
         duration: 3,
         repeat: Infinity,
@@ -245,27 +245,27 @@ const About = () => {
                 {[
                   {
                     icon: "✦",
-                    title: "Create Your Legend",
+                    title: "Create Legend",
                     description:
                       "Register and claim your welcome bonus to begin your adventure",
                   },
                   {
                     icon: "✧",
-                    title: "Diverse Digital Realms",
+                    title: "Digital Realms",
                     description:
-                      "Discover a variety of unique worlds, each with its own challenges and rewards.",
+                      "Discover unique worlds, each with its own challenges and rewards.",
                   },
                   {
                     icon: "⚔️",
-                    title: "Thrilling Activities",
+                    title: "Epic Activities",
                     description:
-                      "From quests to battles, there’s always something exciting to do in Magic Worlds.",
+                      "From quests to battles, there's always something exciting to do.",
                   },
                   {
                     icon: "💰",
                     title: "Token Rewards",
                     description:
-                      "Earn tokens as you play, which can be used to unlock new features or traded with other players.",
+                      "Earn tokens as you play to unlock features or trade with others.",
                   },
                 ].map((feature, index) => (
                   <motion.div
@@ -293,42 +293,44 @@ const About = () => {
                       />
 
                       {/* Icon and title in same row */}
-                      <div className="relative mb-4 flex items-center gap-4">
-                        <div className="relative flex h-14 w-14 flex-shrink-0 items-center justify-center overflow-hidden rounded-xl border border-purple-500/30 bg-gradient-to-br from-purple-500/10 via-purple-500/5 to-transparent backdrop-blur-sm">
-                          {/* Inner glow */}
-                          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                          <motion.div
-                            variants={floatVariant}
-                            animate="float"
-                            className="relative z-10 text-2xl"
-                          >
-                            {feature.icon}
-                          </motion.div>
+                      <div className="relative mb-4 flex items-start gap-4">
+                        <div className="flex flex-col items-center gap-2">
+                          <div className="relative flex h-14 w-14 flex-shrink-0 items-center justify-center overflow-hidden rounded-xl border border-purple-500/30 bg-gradient-to-br from-purple-500/10 via-purple-500/5 to-transparent backdrop-blur-sm">
+                            {/* Inner glow */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                            <motion.div
+                              variants={floatVariant}
+                              animate="float"
+                              className="relative z-10 text-2xl"
+                            >
+                              {feature.icon}
+                            </motion.div>
+                          </div>
+
+                          {/* Decorative dots under icon */}
+                          <div className="flex gap-1.5 opacity-40">
+                            {[...Array(3)].map((_, i) => (
+                              <motion.div
+                                key={i}
+                                className="h-1.5 w-1.5 rounded-full bg-purple-500"
+                                animate={{
+                                  opacity: [0.3, 0.8, 0.3],
+                                  scale: [1, 1.2, 1],
+                                }}
+                                transition={{
+                                  duration: 2,
+                                  repeat: Infinity,
+                                  delay: i * 0.2,
+                                }}
+                              />
+                            ))}
+                          </div>
                         </div>
 
-                        {/* Title in same row */}
-                        <h3 className="flex-1 font-orbitron text-lg font-black uppercase leading-tight tracking-tight text-white sm:text-xl">
+                        {/* Title with more room */}
+                        <h3 className="flex-1 pt-1 font-orbitron text-lg font-black uppercase leading-tight tracking-tight text-white sm:text-xl">
                           {feature.title}
                         </h3>
-
-                        {/* Decorative corner dots */}
-                        <div className="flex gap-1.5 opacity-40">
-                          {[...Array(3)].map((_, i) => (
-                            <motion.div
-                              key={i}
-                              className="h-1.5 w-1.5 rounded-full bg-purple-500"
-                              animate={{
-                                opacity: [0.3, 0.8, 0.3],
-                                scale: [1, 1.2, 1],
-                              }}
-                              transition={{
-                                duration: 2,
-                                repeat: Infinity,
-                                delay: i * 0.2,
-                              }}
-                            />
-                          ))}
-                        </div>
                       </div>
 
                       {/* Content with improved hierarchy */}
