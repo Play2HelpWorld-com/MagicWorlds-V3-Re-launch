@@ -37,7 +37,7 @@ const FeaturesTab = () => {
         "Personalized gaming profile and dashboard",
         "Connect with friends and join communities",
       ],
-      image: "/images/features/signup.jpg",
+      image: "/images/features/signup.gif",
       altText: "Sign Up Illustration",
     },
     {
@@ -52,7 +52,7 @@ const FeaturesTab = () => {
         "Cross-platform synchronization for seamless gaming",
         "New games added regularly to keep things fresh",
       ],
-      image: "/images/features/gaming-experience.jpg",
+      image: "/images/features/gameplay.gif",
       altText: "Gaming Experience Illustration",
     },
     {
@@ -67,7 +67,7 @@ const FeaturesTab = () => {
         "Weekly tournaments with premium prize pools",
         "Convert points to charity donations or exclusive rewards",
       ],
-      image: "/images/features/rewards-system.jpg",
+      image: "/images/features/rewards.gif",
       altText: "Rewards System Illustration",
     },
   ];
@@ -291,84 +291,29 @@ const FeaturesTab = () => {
                       transition={{ duration: 0.6, delay: 0.2 }}
                     >
                       <div className="relative h-64 w-full overflow-hidden rounded-2xl border-2 border-purple-800/50 shadow-lg shadow-purple-900/20 sm:h-80 md:h-96">
-                        {/* For demo purposes, using a colored div instead of actual image */}
-                        <div
-                          className={`absolute inset-0 bg-gradient-to-br
-                        ${
-                          feature.id === "tabOne"
-                            ? "from-blue-900 to-violet-800"
-                            : feature.id === "tabTwo"
-                              ? "from-amber-700 to-red-800"
-                              : "from-emerald-800 to-teal-900"
-                        }`}
-                        >
-                          {/* Game-themed overlay elements */}
-                          <div className="absolute inset-0 opacity-20">
-                            <div className="absolute left-0 top-0 grid h-full w-full grid-cols-6 grid-rows-6">
-                              {Array(36)
-                                .fill(null)
-                                .map((_, i) => (
-                                  <div
-                                    key={i}
-                                    className="border border-white/5"
-                                  ></div>
-                                ))}
-                            </div>
-                          </div>
-
-                          {/* Feature specific game elements */}
-                          {feature.id === "tabOne" && (
-                            <>
-                              <div
-                                className="absolute left-1/4 top-1/4 h-16 w-16 animate-bounce rounded-lg bg-white/20"
-                                style={{ animationDuration: "3s" }}
-                              ></div>
-                              <div className="absolute bottom-1/3 right-1/3 h-20 w-20 animate-pulse rounded-full bg-purple-500/30"></div>
-                            </>
-                          )}
-
-                          {feature.id === "tabTwo" && (
-                            <>
-                              <div
-                                className="absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 transform animate-ping rounded-full border-4 border-yellow-400/50"
-                                style={{ animationDuration: "3s" }}
-                              ></div>
-                              <div className="absolute right-1/4 top-1/3 h-12 w-12 rotate-45 animate-pulse bg-orange-500/40"></div>
-                            </>
-                          )}
-
-                          {feature.id === "tabThree" && (
-                            <>
-                              <div className="absolute bottom-1/4 left-1/4 h-20 w-20 animate-pulse rounded-lg border-4 border-green-400/40"></div>
-                              <div
-                                className="absolute right-1/4 top-1/4 h-16 w-16 animate-bounce rounded-full bg-teal-500/30"
-                                style={{ animationDuration: "4s" }}
-                              ></div>
-                            </>
-                          )}
-                        </div>
-
-                        {/* Central icon representation */}
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div
-                            className={`flex h-24 w-24 items-center justify-center rounded-full bg-black/30 backdrop-blur-sm
-                          ${
-                            feature.id === "tabOne"
-                              ? "text-blue-400"
-                              : feature.id === "tabTwo"
-                                ? "text-amber-400"
-                                : "text-emerald-400"
-                          }`}
-                          >
-                            <span className="text-5xl">
-                              {feature.id === "tabOne"
-                                ? "🎮"
+                        {/* GIF Background with fallback gradient */}
+                        <div className="absolute inset-0">
+                          <Image
+                            src={
+                              feature.id === "tabOne"
+                                ? "/3d/signup.gif"
                                 : feature.id === "tabTwo"
-                                  ? "🏆"
-                                  : "🌍"}
-                            </span>
-                          </div>
+                                  ? "/3d/gameplay.gif"
+                                  : "/3d/rewards.gif"
+                            }
+                            alt={feature.altText}
+                            fill
+                            className="object-cover"
+                            unoptimized // Important for GIFs to maintain animation
+                            priority
+                          />
+
+                          {/* Gradient overlay for better text readability if needed */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                         </div>
+
+                        {/* Optional: Game-themed frame decoration */}
+                        <div className="absolute inset-0 rounded-2xl border-2 border-purple-500/20" />
                       </div>
                     </motion.div>
 
