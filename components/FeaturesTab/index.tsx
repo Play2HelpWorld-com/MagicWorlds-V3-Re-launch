@@ -27,45 +27,48 @@ const FeaturesTab = () => {
   const gamingFeaturesData = [
     {
       id: "tabOne",
-      title: "Immersive Gaming Experience",
+      buttonText: "Sign Up",
+      title: "Sign Up & Join",
+      description:
+        "Create your free account in seconds and become part of the Magic Worlds community. Quick registration gets you instant access to our gaming platform and charitable impact system.",
+      benefits: [
+        "Fast and secure account creation",
+        "No credit card required to start",
+        "Personalized gaming profile and dashboard",
+        "Connect with friends and join communities",
+      ],
+      image: "/images/features/signup.jpg",
+      altText: "Sign Up Illustration",
+    },
+    {
+      id: "tabTwo",
+      buttonText: "Start Playing",
+      title: "Start Playing",
       description:
         "Jump into a world of excitement with our curated collection of games. From action-packed adventures to mind-bending puzzles, discover new experiences and challenge your skills.",
       benefits: [
         "Access to magic worlds games across all genres",
-        "Exclusive in-game rewards and power-ups",
         "Real-time multiplayer with friends and global leaderboards",
         "Cross-platform synchronization for seamless gaming",
+        "New games added regularly to keep things fresh",
       ],
       image: "/images/features/gaming-experience.jpg",
       altText: "Gaming Experience Illustration",
     },
     {
-      id: "tabTwo",
-      title: "Level Up & Earn Rewards",
+      id: "tabThree",
+      buttonText: "Earn Rewards",
+      title: "Earn Rewards",
       description:
         "Every minute of gameplay earns you valuable points. Complete challenges, unlock achievements, and watch your score multiply with consecutive daily play streaks.",
       benefits: [
         "Daily challenges with escalating point rewards",
         "Achievement system with rare collectible badges",
         "Weekly tournaments with premium prize pools",
-        "Special events with limited-time point multipliers",
+        "Convert points to charity donations or exclusive rewards",
       ],
       image: "/images/features/rewards-system.jpg",
       altText: "Rewards System Illustration",
-    },
-    {
-      id: "tabThree",
-      title: "Gaming For Good",
-      description:
-        "Turn your passion for gaming into real-world impact. Convert your earned points into charitable donations, with 100% of the value going to causes you care about.",
-      benefits: [
-        "Support over 150 verified global charities",
-        "Track your donation impact with real-time metrics",
-        "Join community-wide donation challenges",
-        "Earn exclusive recognition badges for charitable milestones",
-      ],
-      image: "/images/features/charity-gaming.jpg",
-      altText: "Charity Gaming Illustration",
     },
   ];
 
@@ -248,7 +251,7 @@ const FeaturesTab = () => {
               <span
                 className={`font-rajdhani text-sm font-bold uppercase tracking-wider transition-colors duration-300 ${currentTab === feature.id ? "text-white" : "text-gray-300"}`}
               >
-                {feature.title.split(" ")[0]}
+                {feature.buttonText}
               </span>
 
               {/* Animated selection indicator */}
@@ -481,10 +484,10 @@ const FeaturesTab = () => {
                           {/* Button text */}
                           <span className="relative z-10">
                             {feature.id === "tabOne"
-                              ? "Start Playing"
+                              ? "Sign Up Now"
                               : feature.id === "tabTwo"
-                                ? "View Rewards"
-                                : "Make Impact"}
+                                ? "Start Playing"
+                                : "View Rewards"}
                           </span>
                         </button>
                       </motion.div>
