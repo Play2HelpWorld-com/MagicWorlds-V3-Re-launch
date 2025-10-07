@@ -148,12 +148,38 @@ const FeaturesTab = () => {
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
-          <h2 className="mb-4 text-4xl font-bold text-white md:text-5xl">
-            <span className="inline-block bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-gradient-to-r from-purple-500/10 via-fuchsia-500/10 to-purple-500/10 px-4 py-2 backdrop-blur-sm"
+          >
+            <motion.div
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="h-2 w-2 rounded-full bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]"
+            />
+            <span className="font-rajdhani text-sm font-bold uppercase tracking-widest text-purple-400">
+              Game Features
+            </span>
+          </motion.div>
+
+          <h2 className="mb-4 font-orbitron text-4xl font-black uppercase tracking-tight text-white md:text-5xl lg:text-6xl">
+            <span className="inline-block bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(168,85,247,0.3)]">
               Choose Your Adventure
             </span>
           </h2>
-          <p className="mx-auto max-w-2xl text-gray-300">
+
+          {/* Decorative line */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mx-auto mb-6 h-1 w-24 bg-gradient-to-r from-transparent via-purple-500 to-transparent"
+          />
+
+          <p className="mx-auto max-w-2xl font-rajdhani text-base font-medium text-gray-300 md:text-lg">
             Enter a new dimension of gaming with our revolutionary features
             designed to enhance your experience, reward your dedication, and
             make a positive impact.
@@ -220,13 +246,13 @@ const FeaturesTab = () => {
               </div>
 
               <span
-                className={`text-base font-medium ${currentTab === feature.id ? "text-white" : "text-gray-300"}`}
+                className={`font-rajdhani text-sm font-bold uppercase tracking-wider transition-colors duration-300 ${currentTab === feature.id ? "text-white" : "text-gray-300"}`}
               >
                 {feature.title.split(" ")[0]}
               </span>
 
               {/* Animated selection indicator */}
-              {currentTab === feature.id && (
+              {/* {currentTab === feature.id && (
                 <motion.div
                   layoutId="activeTab"
                   className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-pink-500"
@@ -234,7 +260,7 @@ const FeaturesTab = () => {
                   animate={{ width: "100%" }}
                   transition={{ duration: 0.3 }}
                 />
-              )}
+              )} */}
             </motion.button>
           ))}
         </motion.div>
@@ -350,9 +376,11 @@ const FeaturesTab = () => {
                         variants={contentVariants}
                         initial="hidden"
                         animate="visible"
-                        className="mb-4 text-3xl font-bold text-white"
+                        className="mb-4 font-orbitron text-3xl font-black uppercase tracking-tight text-white md:text-4xl"
                       >
-                        {feature.title}
+                        <span className="bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent">
+                          {feature.title}
+                        </span>
                       </motion.h3>
 
                       <motion.p
@@ -360,7 +388,7 @@ const FeaturesTab = () => {
                         variants={contentVariants}
                         initial="hidden"
                         animate="visible"
-                        className="mb-6 text-gray-300"
+                        className="mb-6 font-rajdhani text-base font-medium leading-relaxed text-gray-300 md:text-lg"
                       >
                         {feature.description}
                       </motion.p>
@@ -372,7 +400,7 @@ const FeaturesTab = () => {
                         animate="visible"
                         className="space-y-4"
                       >
-                        <h4 className="mb-3 text-lg font-semibold text-purple-400">
+                        <h4 className="mb-3 font-rajdhani text-lg font-bold uppercase tracking-wide text-purple-400 md:text-xl">
                           Key Features:
                         </h4>
                         <ul className="space-y-3">
@@ -413,7 +441,9 @@ const FeaturesTab = () => {
                                   </svg>
                                 </div>
                               </div>
-                              <span className="text-gray-200">{benefit}</span>
+                              <span className="font-rajdhani text-[15px] font-medium leading-relaxed text-gray-200 md:text-base">
+                                {benefit}
+                              </span>
                             </motion.li>
                           ))}
                         </ul>
@@ -428,7 +458,7 @@ const FeaturesTab = () => {
                         className="mt-8"
                       >
                         <button
-                          className={`group relative overflow-hidden rounded-lg px-8 py-3 font-medium text-white transition-all duration-300
+                          className={`group relative overflow-hidden rounded-lg px-8 py-3 font-rajdhani text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 md:text-base
                           ${
                             feature.id === "tabOne"
                               ? "bg-blue-600 hover:bg-blue-700"
