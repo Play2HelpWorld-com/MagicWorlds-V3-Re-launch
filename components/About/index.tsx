@@ -683,8 +683,8 @@ const About = () => {
                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                       />
 
-                      {/* Enhanced gradient overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-90" />
+                      {/* Lighter gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80" />
 
                       {/* Animated shimmer effect */}
                       <motion.div
@@ -745,7 +745,7 @@ const About = () => {
                           {/* Donation amount */}
                           <motion.h3
                             variants={fadeInUp}
-                            className="font-orbitron text-2xl font-black uppercase text-white sm:text-3xl md:text-4xl"
+                            className="font-orbitron text-2xl font-black uppercase text-white drop-shadow-lg sm:text-3xl md:text-4xl"
                           >
                             <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                               $2.4M
@@ -755,7 +755,7 @@ const About = () => {
 
                           {/* Progress bar */}
                           <motion.div variants={fadeInUp} className="space-y-2">
-                            <div className="relative h-3 overflow-hidden rounded-full bg-gray-800/80 backdrop-blur-sm">
+                            <div className="relative h-3 overflow-hidden rounded-full bg-gray-800/60 backdrop-blur-sm">
                               <motion.div
                                 className="absolute inset-0 bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-500"
                                 initial={{ width: "0%" }}
@@ -781,7 +781,7 @@ const About = () => {
                                 />
                               </motion.div>
                             </div>
-                            <p className="font-rajdhani text-xs font-bold text-cyan-300 sm:text-sm">
+                            <p className="font-rajdhani text-xs font-bold text-cyan-300 drop-shadow-md sm:text-sm">
                               70% to our yearly goal of $3.5M
                             </p>
                           </motion.div>
