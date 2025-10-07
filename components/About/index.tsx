@@ -369,7 +369,7 @@ const About = () => {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-gradient-to-t from-black to-gray-900 py-16 md:py-20">
+      <section className="relative overflow-hidden bg-transparent py-16 md:py-20">
         {/* Animated Background Grid */}
         <div className="absolute inset-0 z-0">
           <div
