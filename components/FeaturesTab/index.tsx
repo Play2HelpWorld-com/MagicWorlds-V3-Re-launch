@@ -107,7 +107,7 @@ const FeaturesTab = () => {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-gray-900 to-black py-24">
+    <section className="relative overflow-hidden bg-transparent py-24">
       {/* Background game-themed elements */}
       <div className="absolute left-0 top-0 h-full w-full overflow-hidden">
         <div className="absolute left-10 top-10 h-20 w-20 animate-pulse rounded-full bg-purple-600 opacity-20 blur-3xl"></div>
