@@ -398,35 +398,35 @@ const FeaturesTab = () => {
                         variants={contentVariants}
                         initial="hidden"
                         animate="visible"
-                        className="space-y-4"
+                        className="mb-6 grid gap-3 sm:grid-cols-2"
                       >
-                        <h4 className="mb-3 font-rajdhani text-lg font-bold uppercase tracking-wide text-purple-400 md:text-xl">
-                          Key Features:
-                        </h4>
-                        <ul className="space-y-3">
-                          {feature.benefits.map((benefit, i) => (
-                            <motion.li
-                              key={i}
-                              custom={i + 4}
-                              variants={contentVariants}
-                              initial="hidden"
-                              animate="visible"
-                              className="flex items-start gap-3"
-                            >
-                              <div className="mt-1 flex-shrink-0">
+                        {feature.benefits.map((benefit, i) => (
+                          <motion.div
+                            key={i}
+                            custom={i + 4}
+                            variants={contentVariants}
+                            initial="hidden"
+                            animate="visible"
+                            className="group relative overflow-hidden rounded-xl border border-purple-500/20 bg-gradient-to-br from-purple-900/20 to-transparent p-4 backdrop-blur-sm transition-all duration-300 hover:border-purple-500/40 hover:from-purple-900/30"
+                          >
+                            {/* Glow effect on hover */}
+                            <div className="absolute -right-10 -top-10 h-20 w-20 rounded-full bg-purple-500/20 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100" />
+
+                            <div className="relative flex items-start gap-3">
+                              <div className="mt-0.5 flex-shrink-0">
                                 <div
-                                  className={`flex h-5 w-5 items-center justify-center rounded
+                                  className={`flex h-6 w-6 items-center justify-center rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-110
                                 ${
                                   feature.id === "tabOne"
-                                    ? "bg-blue-500"
+                                    ? "bg-blue-500 shadow-blue-500/50"
                                     : feature.id === "tabTwo"
-                                      ? "bg-amber-500"
-                                      : "bg-emerald-500"
+                                      ? "bg-amber-500 shadow-amber-500/50"
+                                      : "bg-emerald-500 shadow-emerald-500/50"
                                 }`}
                                 >
                                   <svg
-                                    width="12"
-                                    height="12"
+                                    width="14"
+                                    height="14"
                                     viewBox="0 0 12 12"
                                     fill="none"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -444,9 +444,9 @@ const FeaturesTab = () => {
                               <span className="font-rajdhani text-[15px] font-medium leading-relaxed text-gray-200 md:text-base">
                                 {benefit}
                               </span>
-                            </motion.li>
-                          ))}
-                        </ul>
+                            </div>
+                          </motion.div>
+                        ))}
                       </motion.div>
 
                       {/* CTA button with hover effects */}
